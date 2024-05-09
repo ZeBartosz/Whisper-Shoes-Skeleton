@@ -88,6 +88,18 @@ namespace Testing3
 
             Assert.AreEqual(ACustomer.Customer_Address, TestData);
         }
+        [TestMethod]
+
+        public void CustomerID()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+
+            Int32 TestData = 1;
+
+            ACustomer.Customer_id = TestData;
+
+            Assert.AreEqual(ACustomer.Customer_id, TestData);
+        }
 
 
     }

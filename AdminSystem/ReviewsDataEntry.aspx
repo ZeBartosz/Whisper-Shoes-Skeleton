@@ -33,7 +33,7 @@
         <p>
             <asp:Label ID="lblRating" runat="server" style="z-index: 1; left: 12px; top: 142px; position: absolute" Text="Rating"></asp:Label>
             <asp:Label ID="lblReviewTitle" runat="server" style="z-index: 1; left: 13px; top: 240px; position: absolute" Text="Review Title"></asp:Label>
-            <asp:TextBox ID="txtReviewTitle" runat="server" style="z-index: 1; left: 136px; top: 239px; position: absolute"></asp:TextBox>
+            <asp:TextBox ID="txtReviewTitle" runat="server" Style="z-index: 1; left: 136px; top: 239px; position: absolute" OnTextChanged="txtReviewTitle_TextChanged"></asp:TextBox>
             <asp:CheckBox ID="chkActive" runat="server" style="z-index: 1; left: 149px; top: 320px; position: absolute" Text="Active" />
         </p>
         <asp:Label ID="lblIsApproved" runat="server" style="z-index: 1; left: 16px; top: 271px; position: absolute" Text="Is Approved"></asp:Label>
@@ -44,7 +44,7 @@
         <p>
             <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 125px; top: 413px; position: absolute" Text="Cancel" />
         </p>
-        <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 10px; top: 414px; position: absolute" Text="OK" />
+        <asp:Button ID="btnOK" runat="server" Style="z-index: 1; left: 10px; top: 414px; position: absolute" Text="OK"  OnClick="btnOK_Click1"/>
     </form>
 </body>
 </html>

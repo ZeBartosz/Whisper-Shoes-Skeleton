@@ -77,7 +77,7 @@ namespace Testing1
         {
             clsStock aStock = new clsStock();
             Boolean Found = false;
-            Int32 StockId = 13;
+            Int32 StockId = 1;
             Found = aStock.Find(StockId);
             Assert.IsTrue(Found);
         }
@@ -88,9 +88,9 @@ namespace Testing1
             clsStock aStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 stockId = 13;
+            Int32 stockId = 1;
             Found = aStock.Find(stockId);
-            if (aStock.stockId != 13)
+            if (aStock.stockId != 1)
             {
                 OK = false;
             }
@@ -103,7 +103,7 @@ namespace Testing1
             clsStock aStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 stockId = 13;
+            Int32 stockId = 1;
             Found = aStock.Find(stockId);
             if (aStock.stockAutoRestock != true)
             {
@@ -118,9 +118,9 @@ namespace Testing1
             clsStock aStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 stockId = 13;
+            Int32 stockId = 1;
             Found = aStock.Find(stockId);
-            if (aStock.stockLastRestocked != Convert.ToDateTime("23/12/2024"))
+            if (aStock.stockLastRestocked != Convert.ToDateTime("16/04/2024"))
             {
                 OK = false;
             }
@@ -134,7 +134,7 @@ namespace Testing1
             clsStock aStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 stockId = 13;
+            Int32 stockId = 1;
             Found = aStock.Find(stockId);
             if (aStock.stockRestockThreshold != 10)
             {
@@ -150,9 +150,9 @@ namespace Testing1
             clsStock aStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 stockId = 13;
+            Int32 stockId = 1;
             Found = aStock.Find(stockId);
-            if (aStock.stockQuantity != 20)
+            if (aStock.stockQuantity != 25)
             {
                 OK = false;
             }
@@ -166,9 +166,9 @@ namespace Testing1
             clsStock aStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 stockId = 13;
+            Int32 stockId = 1;
             Found = aStock.Find(stockId);
-            if (aStock.stockDescription != "this is whisper shoes")
+            if (aStock.stockDescription != "i like this")
             {
                 OK = false;
             }
@@ -182,7 +182,7 @@ namespace Testing1
             clsStock aStock = new clsStock();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 stockId = 13;
+            Int32 stockId = 1;
             Found = aStock.Find(stockId);
             if (aStock.stockName != "adidas")
             {

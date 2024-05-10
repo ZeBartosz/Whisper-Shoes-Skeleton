@@ -32,4 +32,26 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //navigate to the viewer
         Response.Redirect("StockViewer.aspx");       
     }
+
+    protected void btnFind_Click(object sender, EventArgs e)
+    {
+        clsStock aStock = new clsStock();
+        Int32 stockId;
+        Boolean Found = false;
+        stockId = Convert.ToInt32(txtStockId.Text);
+        Found = aStock.Find(stockId);
+
+        if (Found == true)
+        {
+            txtStockName.Text = aStock.stockName;
+            txtStockDescription.Text = aStock.stockDescription;
+            txtStockQuantity.Text = aStock.stockQuantity.ToString();
+            txtStockRestockThreshold.Text = aStock.stockRestockThreshold.ToString();
+            txtStockLastRestocked.Text = aStock.stockLastRestocked.ToString();
+            chkStockAutoRestock.Checked = aStock.stockAutoRestock;
+
+        } 
+
+
+    }
 }

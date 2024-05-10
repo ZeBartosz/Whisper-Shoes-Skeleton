@@ -15,7 +15,7 @@ namespace Testing1
             Assert.IsNotNull(aStock);
 
         }
-
+             
         [TestMethod]
         public void AutoRestockOK()
         {
@@ -68,6 +68,128 @@ namespace Testing1
             string TestData = "Adidas";
             aStock.stockName = TestData;
             Assert.AreEqual(aStock.stockName, TestData);
+        }
+
+                    /***************Find Method***************/
+
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Int32 StockId = 13;
+            Found = aStock.Find(StockId);
+            Assert.IsTrue(Found);
+        }
+
+        [TestMethod]
+        public void TestStockIdFound()
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 stockId = 13;
+            Found = aStock.Find(stockId);
+            if (aStock.stockId != 13)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestAutoRestockFound()
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 stockId = 13;
+            Found = aStock.Find(stockId);
+            if (aStock.stockAutoRestock != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+        public void TestLastRestockFound() 
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 stockId = 13;
+            Found = aStock.Find(stockId);
+            if (aStock.stockLastRestocked != Convert.ToDateTime("23/12/2024"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestRestockThresholdFound()
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 stockId = 13;
+            Found = aStock.Find(stockId);
+            if (aStock.stockRestockThreshold != 10)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStockQuantityFound()
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 stockId = 13;
+            Found = aStock.Find(stockId);
+            if (aStock.stockQuantity != 20)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStockDescriptionFound()
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 stockId = 13;
+            Found = aStock.Find(stockId);
+            if (aStock.stockDescription != "this is whisper shoes")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
+
+        [TestMethod]
+        public void TestStockNameFound()
+        {
+            clsStock aStock = new clsStock();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 stockId = 13;
+            Found = aStock.Find(stockId);
+            if (aStock.stockName != "adidas")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
         }
 
     }

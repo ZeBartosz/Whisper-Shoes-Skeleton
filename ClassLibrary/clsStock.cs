@@ -110,15 +110,31 @@ namespace ClassLibrary
 
         public bool Find(int stockId)
         {
-            mStockId = 13;
-            mAutoRestock = true;
-            mStockLastRestocke = Convert.ToDateTime("23/12/2024");
-            mStockRestockThreshold = 10;
-            mStockQuantity = 20;
-            mStockDescription = "this is whisper shoes";
-            mStockName = "adidas";
+            //creates an instance of the data connection
+            clsDataConnection DB = new clsDataConnection();
+            //add the parameter
+            DB.AddParameter("@stockId", stockId);
+            //execute the stored procedure
+            DB.Execute("sproc_tblstock_FilterbyStockId");
+            //looking for record
+            if (DB.Count == 0 ) 
+            {
+                mStockId = Convert.ToInt32(DB.DataTable.Rows[0]["stockId"]);
+                mStockName = Convert.ToString(DB.DataTable.Rows[0]["stockName"]);
+                mStockDescription = Convert.ToString(DB.DataTable.Rows[0]["stockDescription"]);
+                mStockQuantity = Convert.ToInt32(DB.DataTable.Rows[0]["stockQuantity"]);
+               
 
-            return true;
+
+
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
+         
         }
     }
 }

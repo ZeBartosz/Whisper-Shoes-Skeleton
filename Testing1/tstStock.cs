@@ -7,6 +7,15 @@ namespace Testing1
     [TestClass]
     public class tstStock
     {
+
+        //creating test data
+        string stockName = "adidas";
+        string stockDescription = "Description";
+        string stockQuantity = "15";
+        string stockRestockThreshold = "10";
+        string stockLastRestocked = DateTime.Now.ToShortDateString();
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -191,6 +200,80 @@ namespace Testing1
             Assert.IsTrue(OK);
 
         }
+
+        /***************Find Method***************/
+        [TestMethod]
+        public void ValidMethidOK()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockNameMinLessOne() 
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockName = "";
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockNameMin() 
+        { 
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockName = "a";
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockNameMinPlusOne() 
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockName = "aa";
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockNameMaxLessOne() 
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockName = "";
+            stockName = stockName.PadRight(49, 'a');
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockNameMax()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockName = "";
+            stockName = stockName.PadRight(50, 'a');
+            aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockNameMaxPlusOne()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockName = "";
+            stockName = stockName.PadRight(51, 'a');
+            aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
+
 
     }
 }

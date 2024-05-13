@@ -1,4 +1,5 @@
 ﻿using System;
+using System.IO;
 using System.Runtime.InteropServices.ComTypes;
 
 namespace ClassLibrary
@@ -135,6 +136,24 @@ namespace ClassLibrary
             }
 
          
+        }
+
+        public string Valid(string stockName, string stockDescription, string stockQuantity, string stockRestockThreshold, string stockLastRestocked)
+        {
+            // Variable which stores Error
+            String Error = "";
+            // if the StockName is blank
+            if (stockName.Length == 0) {
+                Error = Error + "The stock name may not be blank : ";
+            }
+            // if the StockName is more than 50
+            if (stockName.Length > 50) {
+                Error = Error + "The Stock name has to contain less than 50 characters : ";
+            }
+
+
+            
+            return Error;
         }
     }
 }

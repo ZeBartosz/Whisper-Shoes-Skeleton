@@ -93,7 +93,41 @@ namespace Testing5
             //test to see that the two values are the same
             Assert.AreEqual(AnReview.Rating, TestData);
         }
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 ReviewId = 21;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        [TestMethod]
+        public void TestReviewIdFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReviewId = 21;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //check the address id
+            if (AnReview.ReviewId != 21)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(OK);
+        }
     }
 }
-
 

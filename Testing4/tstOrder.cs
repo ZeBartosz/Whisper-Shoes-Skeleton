@@ -1,6 +1,7 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Runtime.InteropServices;
 
 namespace Testing4
 {
@@ -17,77 +18,79 @@ namespace Testing4
 
         }
         [TestMethod]
-        public void ActiveProperty()
-        {
-            //create an intance of the class we want to create
+
+        public void OrderCompletedPropertyOK()
+        { //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             Boolean TestData = true;
-            //assign the data to property
-            AnOrder.Active = TestData;
-            //test to see thst the teo values are the same
-            Assert.AreEqual(AnOrder.Active, TestData);
+            //assign the data to the property
+            AnOrder.OrderCompleted = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrder.OrderCompleted, TestData);
         }
         [TestMethod]
-        public void DataAddedPropertyOK()
-        {
-            //create an intance of the class we want to create
-            clsOrder AnOrder = new clsOrder();
-            //create some test data to assign to the property
-            DateTime TestData = DateTime.Now.Date;
-            //assign the data to property
-            AnOrder.DataAdded = TestData;
-            //test to see thst the teo values are the same
-            Assert.AreEqual(AnOrder.DataAdded, TestData);
-        }
-        [TestMethod]
+
         public void CustomerIdPropertyOK()
-        {
-            //create an intance of the class we want to create
+        { //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            String TestData = "21";
-            //assign the data to property
+            Int32 TestData =22;
+            //assign the data to the property
             AnOrder.CustomerId = TestData;
-            //test to see thst the teo values are the same
+            //test to see that the two values are the same
             Assert.AreEqual(AnOrder.CustomerId, TestData);
         }
         [TestMethod]
+
         public void ItemIdPropertyOK()
-        {
-            //create an intance of the class we want to create
+        { //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            Int32 TestData = 1;
-            //assign the data to property
+            Int32 TestData = 3;
+            //assign the data to the property
             AnOrder.ItemId = TestData;
-            //test to see thst the teo values are the same
+            //test to see that the two values are the same
             Assert.AreEqual(AnOrder.ItemId, TestData);
         }
         [TestMethod]
-        public void TotalAmountOK()
-        {
-            //create an intance of the class we want to create
+
+        public void OrderDatePropertyOK()
+        { //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data to assign to the property
+            DateTime TestData = DateTime.Now.Date;
+            //assign the data to the property
+            AnOrder.OrderDate = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrder.OrderDate, TestData);
+        }
+        [TestMethod]
+
+        public void TotalAmountPropertyOK()
+        { //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
             float TestData = 50;
-            //assign the data to property
+            //assign the data to the property
             AnOrder.TotalAmount = TestData;
-            //test to see thst the teo values are the same
+            //test to see that the two values are the same
             Assert.AreEqual(AnOrder.TotalAmount, TestData);
         }
         [TestMethod]
+
         public void ShippingAddressPropertyOK()
-        {
-            //create an intance of the class we want to create
+        { //create an instance of the class we want to create
             clsOrder AnOrder = new clsOrder();
             //create some test data to assign to the property
-            String TestData = "61 Meadwell Road LE31SU";
-            //assign the data to property
-            AnOrder.ShippingAddress= TestData;
-            //test to see thst the teo values are the same
+            string TestData = "61 Meadwell Road le31su";
+            //assign the data to the property
+            AnOrder.ShippingAddress = TestData;
+            //test to see that the two values are the same
             Assert.AreEqual(AnOrder.ShippingAddress, TestData);
         }
+
+
 
 
     }

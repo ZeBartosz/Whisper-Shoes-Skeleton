@@ -117,16 +117,142 @@ namespace Testing5
             //create a Boolean variable to record if the data is OK (assume it is)
             Boolean OK = true;
             //create some test data to use with the method
-            Int32 ReviewId = 21;
+            Int32 ReviewId = 1;
             //invoke the method
             Found = AnReview.Find(ReviewId);
             //check the address id
-            if (AnReview.ReviewId != 21)
+            if (AnReview.ReviewId != 1)
             {
                 OK = false;
             }
             //test to see that the result is correct
             Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerNameFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReviewId = 1;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //check the customer name
+            if (AnReview.CustomerName != "Test CustomerName")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(!OK);
+        }
+        [TestMethod]
+        public void TestRatingFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReviewId = 1;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //check the rating
+            if (AnReview.Rating != 5)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(!OK);
+        }
+        [TestMethod]
+        public void TestDateSubmittedFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReviewId = 1;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //check the date submitted
+            if (AnReview.DateSubmitted != Convert.ToDateTime("01/01/2024"))
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(!OK);
+        }
+        [TestMethod]
+        public void TestReviewDescriptionFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReviewId = 1;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //check the review description
+            if (AnReview.ReviewDescription != "Test ReviewDescription")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(!OK);
+        }
+        [TestMethod]
+        public void TestReviewTitleFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReviewId = 1;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //check the review title
+            if (AnReview.ReviewTitle != "Test ReviewTitle")
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(!OK);
+        }
+        [TestMethod]
+        public void TestIsApprovedFound()
+        {
+            //create an instance of the class we want to create
+            clsReview AnReview = new clsReview();
+            //create a Boolean variable to store the result of the search
+            Boolean Found = false;
+            //create a Boolean variable to record if the data is OK (assume it is)
+            Boolean OK = true;
+            //create some test data to use with the method
+            Int32 ReviewId = 1;
+            //invoke the method
+            Found = AnReview.Find(ReviewId);
+            //check the is approved
+            if (AnReview.IsApproved != true)
+            {
+                OK = false;
+            }
+            //test to see that the result is correct
+            Assert.IsTrue(!OK);
         }
     }
 }

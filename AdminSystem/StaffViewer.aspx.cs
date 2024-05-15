@@ -25,7 +25,7 @@ public partial class _1Viewer : System.Web.UI.Page
         Response.Write("<br/>");
         Response.Write(Staff.StaffSalary);
         Response.Write("<br/>");
-        Response.Write(Staff.ManagerActive);
+        Response.Write(Staff.StaffManager);
         Response.Write("<br/>");
 
 

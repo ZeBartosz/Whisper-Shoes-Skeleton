@@ -24,8 +24,8 @@ namespace Testing2
         {
             clsStaff Staff = new clsStaff();
             Boolean TestData = true;
-            Staff.ManagerActive = TestData;
-            Assert.AreEqual(Staff.ManagerActive, TestData);
+            Staff.StaffManager = TestData;
+            Assert.AreEqual(Staff.StaffManager, TestData);
 
         }
         [TestMethod]
@@ -86,7 +86,7 @@ namespace Testing2
             //create a Boolean variable to store results of validation
             Boolean Found = false;
             //create some test data
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method 
             Found = Staff.Find(StaffId);
             //test to see if the result is true
@@ -105,11 +105,11 @@ namespace Testing2
             //create a boolean variable to record if the data is OK
             Boolean OK = true;
             //create some test data 
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             //invoke the method
             Found = Staff.Find(StaffId);
             //check the staff id 
-            if (Staff.StaffId != 21)
+            if (Staff.StaffId != 1)
             {
                 OK = false;
             }
@@ -122,9 +122,9 @@ namespace Testing2
             clsStaff Staff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             Found = Staff.Find(StaffId);
-            if (Staff.StaffName != "Test Name")
+            if (Staff.StaffName != "James Roberts") 
             {
                 OK =false;
             }
@@ -137,9 +137,9 @@ namespace Testing2
             clsStaff Staff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             Found = Staff.Find(StaffId);
-            if (Staff.StaffEmail != "Test@email.com")
+            if (Staff.StaffEmail != "james20@gmail.com")
             {
                 OK = false;
             }
@@ -152,9 +152,9 @@ namespace Testing2
             clsStaff Staff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             Found = Staff.Find(StaffId);
-            if (Staff.StaffPassword != "TestPassword")
+            if (Staff.StaffPassword != "JPassword20")
             {
                 OK = false;
             }
@@ -167,9 +167,9 @@ namespace Testing2
             clsStaff Staff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             Found = Staff.Find(StaffId);
-            if (Staff.StaffStartDate != Convert.ToDateTime("15/05/2023"))
+            if (Staff.StaffStartDate != Convert.ToDateTime("01/05/2024"))
             {
                 OK = false;
             }
@@ -181,9 +181,9 @@ namespace Testing2
             clsStaff Staff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             Found = Staff.Find(StaffId);
-            if (Staff.StaffSalary != 1)
+            if (Staff.StaffSalary != 400000)
             {
                 OK = false;
             }
@@ -195,9 +195,9 @@ namespace Testing2
             clsStaff Staff = new clsStaff();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 StaffId = 21;
+            Int32 StaffId = 1;
             Found = Staff.Find(StaffId);
-            if (Staff.ManagerActive != true)
+            if (Staff.StaffManager != true)
             {
                 OK = false;
             }

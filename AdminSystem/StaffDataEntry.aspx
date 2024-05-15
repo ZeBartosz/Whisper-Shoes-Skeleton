@@ -17,6 +17,7 @@
         <p>
             <asp:TextBox ID="txtStaffId" runat="server"  style="z-index: 1; left: 125px; top: 15px; position: absolute; width: 152px" height="18px"></asp:TextBox>
             <asp:TextBox ID="txtStaffName" runat="server" style="z-index: 1; left: 125px; top: 47px; position: absolute; width: 152px" height="18px"></asp:TextBox>
+            <asp:Button ID="btnFind" runat="server" Height="23px" OnClick="btnFind_Click" style="margin-left: 322px" Text="Find" Width="72px" />
         </p>
         <p>
             <asp:TextBox ID="txtStaffEmail" runat="server" style="z-index: 1; left: 125px; top: 88px; position: absolute; width: 152px; height: 18px"></asp:TextBox>
@@ -24,12 +25,26 @@
         <p>
             <asp:TextBox ID="txtStaffStartDate" runat="server" style="z-index: 1; left: 125px; top: 162px; position: absolute" height="18px" width="152px"></asp:TextBox>
             <asp:TextBox ID="txtStaffSalary" runat="server" style="z-index: 1; left: 125px; top: 199px; position: absolute; height: 18px;" width="152px"></asp:TextBox>
-            <asp:TextBox ID="txtStaffPassword" runat="server" style="z-index: 1; left: 125px; top: 119px; position: absolute; width: 152px; height: 18px;" OnTextChanged="txtStaffPassword_TextChanged"></asp:TextBox>
+            <asp:TextBox ID="txtStaffPassword" runat="server" style="z-index: 1; left: 125px; top: 119px; position: absolute; width: 152px; height: 18px;"></asp:TextBox>
         </p>
         <asp:CheckBox ID="chkStaffManager" runat="server" style="z-index: 1; left: 127px; top: 240px; position: absolute; width: 107px; margin-bottom: 0px;" Text="Staff Manager" />
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 25px; top: 277px; position: absolute"></asp:Label>
         <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 39px; top: 313px; position: absolute" Text="OK" OnClick="btnOK_Click" />
         <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 164px; top: 312px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
+        <p>
+            &nbsp;</p>
     </form>
 </body>
 </html>

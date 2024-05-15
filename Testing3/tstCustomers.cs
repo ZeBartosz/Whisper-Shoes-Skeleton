@@ -114,6 +114,8 @@ namespace Testing3
             Found = aCustomer.Find(Customer_id);
             Assert.IsTrue(Found);
         }
+
+        //Find methods
         [TestMethod]
 
         public void TestCustomerIdFound()
@@ -136,6 +138,52 @@ namespace Testing3
             //test to see thate the result is correct
             Assert.IsTrue(OK);
             
+        }
+        [TestMethod]
+
+        public void TestCustomerFirstNameFound()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+            if (ACustomer.Customer_First_Name != "Ethan")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+
+        public void TestCustomerLastNameFound()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+            if (ACustomer.Customer_Last_Name != "Brogan")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+
+        [TestMethod]
+
+        public void TestCustomersDOBFound()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+            if (ACustomer.Customer_DOB != Convert.ToDateTime("22/08/2013")) 
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
         }
 
 

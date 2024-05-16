@@ -384,7 +384,7 @@ namespace Testing1
         }
 
         // Validating StockQuantity 
-
+        
         // Validating stockRestockThreshold
 
         // Validating stockLastRestocked
@@ -420,11 +420,49 @@ namespace Testing1
             clsStock aStock = new clsStock();
             String Error = "";
             DateTime TestDate;
-            TestDate = DateTime.Now;       
+            TestDate = DateTime.Now.Date;       
             String stockLastRestocked = TestDate.ToString();
             Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
             Assert.AreEqual(Error, "");
         }
+
+        [TestMethod]
+        public void StockLastRestockedMinPlustOne()
+        { 
+            clsStock aStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now;
+            TestDate = TestDate.AddDays(1);
+            String stockLastRestocked = TestDate.ToString();
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockLastRestockedExtremeMax()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now;
+            TestDate = TestDate.AddDays(1);
+            String stockLastRestocked = TestDate.ToString();
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void StockLastRestockedInvalidData()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockLastRestocked = "This is not a date";
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
+
+
 
 
 

@@ -167,27 +167,37 @@ namespace ClassLibrary
             }
 
             // stockQuantity Validation
-            // Checking if stockQuantity Variable is blank  
-            if (stockQuantity.Length < 0)
-            {
-                Error = Error + "The stock description may not be blank : ";
-            }
-            // if the stockQuantity is more than 255
-            if (stockQuantity.Length > 255)
-            {
-                Error = Error + "The Stock description has to contain less than 255 characters : ";
-            }
+
 
             // StockRestockThreshold validation
 
+
             // StockLastRestocked validation
-            // Copy the StockLastRestocked value to the DateTemp and convert it back to dateTime
-            DateTemp = Convert.ToDateTime(stockLastRestocked);
-            // Checking if the date is less than time right now
-            if (DateTemp < DateTime.Now.Date) 
+            DateTime DateComp = DateTime.Now.Date;
+
+            try
             {
-                Error = Error + "The date can't be in the past : ";
+                // Copy the StockLastRestocked value to the DateTemp and convert it back to dateTime
+                DateTemp = Convert.ToDateTime(stockLastRestocked);
+
+                // Checking if the date is less than the time right now
+                if (DateTemp < DateComp)
+                {
+                    Error = Error + "The date can't be in the past : ";
+                }
+                // Checking if the date is more than the time right now 
+                if (DateTemp > DateComp)
+                {
+                    Error = Error + "The date can't be in the future : ";
+                }
             }
+            catch
+            {
+                Error = Error + "The date was invaid date";
+            }
+           
+
+
             return Error;
         }
     }

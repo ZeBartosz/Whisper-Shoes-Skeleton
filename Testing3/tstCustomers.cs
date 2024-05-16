@@ -137,7 +137,7 @@ namespace Testing3
             }
             //test to see thate the result is correct
             Assert.IsTrue(OK);
-            
+
         }
         [TestMethod]
 
@@ -179,16 +179,63 @@ namespace Testing3
             Boolean OK = true;
             Int32 Customer_id = 1;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_DOB != Convert.ToDateTime("22/08/2013")) 
+            if (ACustomer.Customer_DOB != Convert.ToDateTime("22/08/2013"))
             {
                 OK = false;
             }
             Assert.IsTrue(OK);
         }
 
+        [TestMethod]
 
+        public void TestCustomerPhoneNmbrFound()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+            if (ACustomer.Customer_Phone_Nmbr != "07400")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
 
+        }
+
+        [TestMethod]
+
+        public void TestCustomerAddressFound()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+            if (ACustomer.Customer_Address != "1 street")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+
+        public void TestSavePaymentInfoFound()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 Customer_id = 1;
+            Found = ACustomer.Find(Customer_id);
+            if (ACustomer.Save_Payment_Info != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+
+        }
 
 
     }
+        
 }

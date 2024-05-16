@@ -9,9 +9,22 @@ namespace ClassLibrary
         private String mCustomer_First_Name;
         private String mCustomer_Last_Name;
         private DateTime mCustomer_DOB;
+        private String mCustomer_Phone_Nmbr;
+        private String mCustomer_Address;
+        private Boolean mSave_Payment_Info;
 
 
-        public bool Save_Payment_Info { get; set; }
+        public bool Save_Payment_Info
+        {
+            get
+            {
+                return mSave_Payment_Info;
+            }
+            set
+            {
+                mSave_Payment_Info = value;
+            }
+        }
         public string Customer_First_Name
         {
             get
@@ -45,10 +58,30 @@ namespace ClassLibrary
                 mCustomer_DOB = value;
             }
         }
-        public string Customer_Phone_Nmbr { get; set; }
-        public string Customer_Address { get; set; }
+        public string Customer_Phone_Nmbr
+        {
+            get
+            {
+                return mCustomer_Phone_Nmbr;
+            }
+            set
+            {
+                mCustomer_Phone_Nmbr = value;
+            }
+        }
 
-        //practical 9 page 8
+        public string Customer_Address
+        {
+            get
+            {
+                return mCustomer_Address;
+            }
+            set
+            {
+                mCustomer_Address = value;
+            }
+        }
+
         public Int32 Customer_id
         {
             get
@@ -73,6 +106,9 @@ namespace ClassLibrary
             mCustomer_First_Name = "Ethan";
             mCustomer_Last_Name = "Brogan";
             mCustomer_DOB = Convert.ToDateTime ("22/08/2013");
+            mCustomer_Phone_Nmbr = "07400";
+            mCustomer_Address = "1 street";
+            mSave_Payment_Info = true;
             //always return true
             return true;
         }

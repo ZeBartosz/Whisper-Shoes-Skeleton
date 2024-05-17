@@ -109,7 +109,7 @@ namespace ClassLibrary
             mCustomer_Phone_Nmbr = "07400";
             mCustomer_Address = "1 street";
             mSave_Payment_Info = true;
-            //always return true
+            //returns true so it passes the test
             return true;
         }
 

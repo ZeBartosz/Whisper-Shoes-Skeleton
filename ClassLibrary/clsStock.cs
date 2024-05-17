@@ -1,5 +1,4 @@
 ﻿using System;
-using System.IO;
 using System.Runtime.InteropServices.ComTypes;
 
 namespace ClassLibrary
@@ -136,69 +135,6 @@ namespace ClassLibrary
             }
 
          
-        }
-
-        public string Valid(string stockName, string stockDescription, string stockQuantity, string stockRestockThreshold, string stockLastRestocked)
-        {
-            // Variable which stores Error
-            String Error = "";
-            DateTime DateTemp;
-
-            // stockName validation
-            // Checking if the StockName variable is blank
-            if (stockName.Length == 0) {
-                Error = Error + "The stock name may not be blank : ";
-            }
-            // if the StockName is more than 50
-            if (stockName.Length > 50) {
-                Error = Error + "The Stock name has to contain less than 50 characters : ";
-            }
-
-            // stockDescription validation 
-            // Checking if stockDescription Variable is blank  
-            if (stockDescription.Length == 0)
-            {
-                Error = Error + "The stock description may not be blank : ";
-            }
-            // if the stockDescription is more than 255
-            if (stockDescription.Length > 255)
-            {
-                Error = Error + "The Stock description has to contain less than 255 characters : ";
-            }
-
-            // stockQuantity Validation
-
-
-            // StockRestockThreshold validation
-
-
-            // StockLastRestocked validation
-            DateTime DateComp = DateTime.Now.Date;
-
-            try
-            {
-                // Copy the StockLastRestocked value to the DateTemp and convert it back to dateTime
-                DateTemp = Convert.ToDateTime(stockLastRestocked);
-
-                // Checking if the date is less than the time right now
-                if (DateTemp < DateComp)
-                {
-                    Error = Error + "The date can't be in the past : ";
-                }
-                // Checking if the date is more than the time right now 
-                if (DateTemp > DateComp)
-                {
-                    Error = Error + "The date can't be in the future : ";
-                }
-            }
-            catch
-            {
-                Error = Error + "The date was invaid date";
-            }
-           
-
-
-            return Error;
         }
     }
 }

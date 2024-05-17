@@ -19,48 +19,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
         clsStaff Staff = new clsStaff();
         //capture the name
         Staff.StaffName = txtStaffName.Text;
-        Staff.StaffEmail = txtStaffEmail.Text;
-        Staff.StaffPassword = txtStaffPassword.Text;
-        Staff.StaffStartDate = Convert.ToDateTime(txtStaffStartDate.Text);
-        Staff.StaffSalary = Convert.ToInt32(txtStaffSalary.Text);
-        Staff.StaffManager = chkStaffManager.Checked;
-
         //store the name in a session object
-        Session["Staff"] = Staff;
+        Session["StaffName"] = Staff;
         //navigate to the view page
+
+        Staff.StaffEmail = txtStaffEmail.Text;
+        Session["StaffEmail"] = Staff;
+
+        Staff.StaffPassword = txtStaffPassword.Text;
+        Session["StaffPassword"] = Staff;
+
+        Staff.StaffStartDate = Convert.ToDateTime(txtStaffStartDate.Text);
+        Session["StaffStartDate"] = Staff;
+
+        Staff.StaffSalary = Convert.ToInt32(txtStaffSalary.Text);
+        Session["StaffSalary"] = Staff;
+
+        Staff.ManagerActive = chkStaffManager.Checked;
+        Session["StaffManager"] = Staff;
+
         Response.Redirect("StaffViewer.aspx"); 
+    }
+
+    protected void txtStaffPassword_TextChanged(object sender, EventArgs e)
+    {
+
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
-    }
-
-
-    protected void btnFind_Click(object sender, EventArgs e)
-    {
-        //create an instance of the staff class
-        clsStaff Staff = new clsStaff();
-        //create a variable to store the primary key
-        Int32 StaffId;
-        //create a variable to store the result of the find operation
-        Boolean Found = false;
-        //get the primary key entered by the user
-        StaffId = Convert.ToInt32(txtStaffId.Text);
-        //find the record
-        Found = Staff.Find(StaffId);
-        //if found
-        if (Found == true)
-        {
-            //display the values of the properties in the form
-            txtStaffName.Text = Staff.StaffName;
-            txtStaffEmail.Text = Staff.StaffEmail;
-            txtStaffPassword.Text = Staff.StaffPassword;    
-            txtStaffStartDate.Text = Staff.StaffStartDate.ToString();
-            txtStaffSalary.Text = Staff.StaffSalary.ToString();
-            chkStaffManager.Checked = Staff.StaffManager;
-
-        }
 
     }
 }

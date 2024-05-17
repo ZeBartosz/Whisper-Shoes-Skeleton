@@ -13,22 +13,24 @@ public partial class _1Viewer : System.Web.UI.Page
         //create an instance
         clsStaff Staff = new clsStaff();
         //get the data from session
-        Staff = (clsStaff)Session["Staff"];
-        //display the data
+        Staff = (clsStaff)Session["StaffName"];
+        //display the staff name
         Response.Write(Staff.StaffName);
-        Response.Write("<br/>");
+
+        Staff = (clsStaff)Session["StaffEmail"];
         Response.Write(Staff.StaffEmail);
-        Response.Write("<br/>");
+
+        Staff = (clsStaff)Session["StaffPassword"];
         Response.Write(Staff.StaffPassword);
-        Response.Write("<br/>");
+
+        Staff = (clsStaff)Session["StaffStartDate"];
         Response.Write(Staff.StaffStartDate);
-        Response.Write("<br/>");
+
+        Staff = (clsStaff)Session["StaffSalary"];
         Response.Write(Staff.StaffSalary);
-        Response.Write("<br/>");
-        Response.Write(Staff.StaffManager);
-        Response.Write("<br/>");
 
-
+        Staff = (clsStaff)Session["StaffManager"];
+        Response.Write(Staff.ManagerActive);
 
     }
 }

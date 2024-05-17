@@ -179,7 +179,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 Customer_id = 1;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_DOB != Convert.ToDateTime("22/08/2013"))
+            if (ACustomer.Customer_DOB != Convert.ToDateTime("19/02/2004"))
             {
                 OK = false;
             }
@@ -212,7 +212,7 @@ namespace Testing3
             Boolean OK = true;
             Int32 Customer_id = 1;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_Address != "1 street")
+            if (ACustomer.Customer_Address != "22 street")
             {
                 OK = false;
             }

@@ -89,6 +89,128 @@ namespace Testing4
             //test to see that the two values are the same
             Assert.AreEqual(AnOrder.ShippingAddress, TestData);
         }
+        [TestMethod]
+
+        public void OrderIdPropertyOK()
+        { //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create some test data to assign to the property
+            Int32 TestData = 1;
+            //assign the data to the property
+            AnOrder.OrderId = TestData;
+            //test to see that the two values are the same
+            Assert.AreEqual(AnOrder.OrderId, TestData);
+        }
+        /***************Find Method***************/
+        [TestMethod]
+        public void FindMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsOrder AnOrder = new clsOrder();
+            //create a Boolean variable to store the results of the validation
+            Boolean Found = false;
+            //create some test data to use with the method
+            Int32 OrderId = 21;
+            //invoke the method
+            Found = AnOrder.Find(OrderId);
+            //test to see if the result is true
+            Assert.IsTrue(Found);
+        }
+        /***************PROPERTY DATA TEST***************/
+        [TestMethod]
+        public void TestOrderIdFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 21;
+            Found = AnOrder.Find(OrderId);
+            if(AnOrder.OrderId !=21)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestCustomerIdFound()
+        {  clsOrder AnOrder = new clsOrder();
+            Boolean Found = false; 
+            Boolean OK = true;
+            Int32 OrderId = 21;
+            Found= AnOrder.Find(OrderId);
+            if(AnOrder.CustomerId !=123)
+            { 
+            OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestItemIdFound()
+        { clsOrder AnOrder = new clsOrder();
+        Boolean Found = false;
+        Boolean OK = true;
+        Int32 OrderId = 21;
+        Found = AnOrder.Find(OrderId);
+            if (AnOrder.ItemId != 23)
+            {  OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestOrderDateFound()
+        { clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 21;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.OrderDate != Convert.ToDateTime("23/12/2022"))
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestTotalAmountFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 21;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.TotalAmount!= 50)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestShippingAddressFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 21;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.ShippingAddress != "61 Meadwell Road")
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
+        [TestMethod]
+        public void TestOrderCompletedFound()
+        {
+            clsOrder AnOrder = new clsOrder();
+            Boolean Found = false;
+            Boolean OK = true;
+            Int32 OrderId = 21;
+            Found = AnOrder.Find(OrderId);
+            if (AnOrder.OrderCompleted != true)
+            {
+                OK = false;
+            }
+            Assert.IsTrue(OK);
+        }
 
 
 

@@ -70,7 +70,7 @@ namespace Testing1
             Assert.AreEqual(aStock.stockName, TestData);
         }
 
-                    /***************Find Method***************/
+                    /**************Find Method**************/
 
         [TestMethod]
         public void FindMethodOK()

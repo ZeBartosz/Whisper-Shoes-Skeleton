@@ -98,19 +98,35 @@ namespace ClassLibrary
             
         }
         
+        //-------Find method-----------
 
-        public bool Find(int customer_id)
+
+        public bool Find(int Customer_id)
         {
-            //set the private data members to the test data value
-            mCustomer_id = 1;
-            mCustomer_First_Name = "Ethan";
-            mCustomer_Last_Name = "Brogan";
-            mCustomer_DOB = Convert.ToDateTime ("22/08/2013");
-            mCustomer_Phone_Nmbr = "07400";
-            mCustomer_Address = "1 street";
-            mSave_Payment_Info = true;
-            //returns true so it passes the test
-            return true;
+            //create an instance of the data connection
+            clsDataConnection DB = new clsDataConnection ();
+            //add the parameter for the address id to search for
+            DB.AddParameter("@Customer_id", Customer_id);
+            //execute the stored procedure
+            DB.Execute("sproc_tblCustomers_FilterByCustomerId");
+            //if one record is found(there should either be one or zero
+            if (DB.Count == 1)
+            {
+                mCustomer_id = Convert.ToInt32(DB.DataTable.Rows[0]["Customer_id"]);
+                mCustomer_First_Name = Convert.ToString(DB.DataTable.Rows[0]["Customer_First_Name"]);
+                mCustomer_Last_Name = Convert.ToString(DB.DataTable.Rows[0]["Customer_Last_Name"]);
+                mCustomer_DOB = Convert.ToDateTime(DB.DataTable.Rows[0]["Customer_DOB"]);
+                mCustomer_Phone_Nmbr = Convert.ToString(DB.DataTable.Rows[0]["Customer_Phone_Nmbr"]);
+                mCustomer_Address = Convert.ToString(DB.DataTable.Rows[0]["Customer_Address"]);
+                mSave_Payment_Info = Convert.ToBoolean(DB.DataTable.Rows[0]["Save_Payment_Info"]);
+                
+                return true;
+            }
+            //if no record is found
+            else
+            {
+                return false;   
+            }
         }
 
     }

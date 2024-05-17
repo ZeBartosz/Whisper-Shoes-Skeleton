@@ -15,6 +15,7 @@ namespace ClassLibrary
         public bool Find(int reviewId)
         {
             mReviewId = 1;
+
             //always return true
             return true;
         }

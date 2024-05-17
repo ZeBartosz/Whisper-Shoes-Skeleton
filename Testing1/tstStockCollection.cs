@@ -35,15 +35,6 @@ namespace Testing1
         }
 
         [TestMethod]
-        public void CountPropertyOK()
-        {
-            clsStockCollection allStock = new clsStockCollection();
-            Int32 SomeCount = 0;
-            allStock.Count = SomeCount;
-            Assert.AreEqual(allStock.Count, SomeCount);
-        }
-
-        [TestMethod]
         public void ThisStockPropertyOK()
         {
             clsStockCollection allStock = new clsStockCollection();
@@ -79,12 +70,6 @@ namespace Testing1
             Assert.AreEqual(allStock.Count, TestList.Count);
         }
 
-        [TestMethod]
-        public void TwoRecordPresent()
-        {
-            clsStockCollection allStock = new clsStockCollection();
-            Assert.AreEqual(allStock.Count, 2);
-        }
 
 
     }

@@ -4,9 +4,19 @@ using System;
 
 namespace Testing3
 {
+
     [TestClass]
     public class tstCustomers
     {
+        //good test data
+        //create some test data to pass the method
+        string Customer_First_Name = "Ethan";
+        string Customer_Last_Name = "Brogan";
+        string Customer_DOB = "19/02/2004";
+        string Customer_Address = "107 street";
+        string Customer_Phone_Nmbr = "07400";
+
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -115,7 +125,7 @@ namespace Testing3
             Assert.IsTrue(Found);
         }
 
-        //Find methods
+        //Find methods------------------------------
         [TestMethod]
 
         public void TestCustomerIdFound()
@@ -234,6 +244,36 @@ namespace Testing3
             Assert.IsTrue(OK);
 
         }
+
+        [TestMethod] // validation tests----------------------------
+
+        public void ValidMethodOK()
+        {
+            //create an instance of the class we want to create
+            clsCustomers ACustomer = new clsCustomers();
+            //string variable to store any error message
+            string Error = "";
+            //invoke method
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            //test to see that the result is correct
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void CustomerFirstMinLessOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_First_Name = "";
+            //invoke method
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        
 
 
     }

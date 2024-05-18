@@ -140,6 +140,10 @@ namespace ClassLibrary
                 //record the error
                 Error = Error + "The Customer's first name may not be blank : ";
             }
+            if (customer_First_Name.Length > 50)
+            {
+                Error = Error + "The customers first name must be less than 50 characters : ";
+            }
             return Error;
             
         }

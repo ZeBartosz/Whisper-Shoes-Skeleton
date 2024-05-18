@@ -129,5 +129,24 @@ namespace ClassLibrary
             }
         }
 
+        //--------------Validate method---------------
+
+        public string Valid(string customer_First_Name, string customer_Last_Name, string customer_DOB, string customer_Address, string customer_Phone_Nmbr)
+        {
+            //create string variable to store the error
+            String Error = "";
+            if (customer_First_Name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customer's first name may not be blank : ";
+            }
+            return Error;
+            
+        }
+
+
+
+
+
     }
 }

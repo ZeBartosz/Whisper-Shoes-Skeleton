@@ -1,7 +1,10 @@
 ﻿using System;
+namespace ClassLibrary
+{
+
 
     public class clsStaff
-{
+    {
         public bool Find(int StaffId)
         {
             //create an instance of the data connection
@@ -91,7 +94,7 @@
             }
             if (staffEmail.Length < 3)
             {
-                Error = Error + "Your email must be more than 3 characters :" ;
+                Error = Error + "Your email must be more than 3 characters :";
             }
 
             //if StaffPassword is blank
@@ -113,13 +116,11 @@
 
 
             return Error;
-
         }
-        //private data member for the staff id property
-        private Int32 mStaffId;
+        
 
 
-    }
+    
     //private data member for the staff id property
     private Int32 mStaffId;
 
@@ -211,4 +212,5 @@
             mStaffManager = value;
         }
     }
+  }
 }

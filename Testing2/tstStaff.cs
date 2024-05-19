@@ -3,6 +3,7 @@ using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Security.Cryptography;
 
+
 namespace Testing2
 {
     [TestClass]
@@ -44,18 +45,17 @@ namespace Testing2
             DateTime TestData = DateTime.Now.Date;
             Staff.StaffStartDate = TestData;
             Assert.AreEqual(Staff.StaffStartDate, TestData);
-
         }
-        
+
         [TestMethod]
         public void StaffSalaryPropertyOK()
         {
             clsStaff Staff = new clsStaff();
-           float TestData = 1;
+            float TestData = 1;
             Staff.StaffSalary = TestData;
             Assert.AreEqual(Staff.StaffSalary, TestData);
-        
-            
+
+
         }
         [TestMethod]
         public void StaffNamePropertyOK()
@@ -64,7 +64,6 @@ namespace Testing2
             string TestData = "Name";
             Staff.StaffName = TestData;
             Assert.AreEqual(Staff.StaffName, TestData);
-
         }
         [TestMethod]
         public void StaffEmailPropertyOK()
@@ -73,7 +72,6 @@ namespace Testing2
             string TestData = "Email";
             Staff.StaffEmail = TestData;
             Assert.AreEqual(Staff.StaffEmail, TestData);
-
         }
         [TestMethod]
         public void StaffPasswordPropertyOK()
@@ -123,7 +121,7 @@ namespace Testing2
                 OK = false;
             }
             //test to see if result is correct
-            Assert.IsTrue(OK);  
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestStaffNameFound()
@@ -133,9 +131,9 @@ namespace Testing2
             Boolean OK = true;
             Int32 StaffId = 1;
             Found = Staff.Find(StaffId);
-            if (Staff.StaffName != "James Roberts") 
+            if (Staff.StaffName != "James Roberts")
             {
-                OK =false;
+                OK = false;
             }
             Assert.IsTrue(OK);
         }
@@ -581,5 +579,3 @@ namespace Testing2
         }
     }
 }
-
-        

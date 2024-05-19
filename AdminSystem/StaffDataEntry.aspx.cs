@@ -5,14 +5,11 @@ using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
 using ClassLibrary;
-
 public partial class _1_DataEntry : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
-
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance
@@ -28,7 +25,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         //store the name in a session object
         Session["Staff"] = Staff;
         //navigate to the view page
-        Response.Redirect("StaffViewer.aspx"); 
+        Response.Redirect("StaffViewer.aspx");
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
@@ -55,7 +52,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             //display the values of the properties in the form
             txtStaffName.Text = Staff.StaffName;
             txtStaffEmail.Text = Staff.StaffEmail;
-            txtStaffPassword.Text = Staff.StaffPassword;    
+            txtStaffPassword.Text = Staff.StaffPassword;
             txtStaffStartDate.Text = Staff.StaffStartDate.ToString();
             txtStaffSalary.Text = Staff.StaffSalary.ToString();
             chkStaffManager.Checked = Staff.StaffManager;

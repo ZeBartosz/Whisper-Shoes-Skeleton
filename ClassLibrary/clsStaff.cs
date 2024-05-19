@@ -1,9 +1,7 @@
 ﻿using System;
 
-namespace ClassLibrary
-{
     public class clsStaff
-    {
+{
         public bool Find(int StaffId)
         {
             //create an instance of the data connection
@@ -120,93 +118,97 @@ namespace ClassLibrary
         //private data member for the staff id property
         private Int32 mStaffId;
 
-        public Int32 StaffId
-        {
-            get
-            {
-                return mStaffId;
-            }
-            set
-            {
-                mStaffId = value;
-            }
-        }
 
-        private String mStaffName;
+    }
+    //private data member for the staff id property
+    private Int32 mStaffId;
 
-        public String StaffName
+    public Int32 StaffId
+    {
+        get
         {
-            get
-            {
-                return mStaffName;
-            }
-            set
-            {
-                mStaffName = value;
-            }
+            return mStaffId;
         }
+        set
+        {
+            mStaffId = value;
+        }
+    }
 
-        private String mStaffEmail;
+    private String mStaffName;
 
-        public String StaffEmail
+    public String StaffName
+    {
+        get
         {
-            get
-            {
-                return mStaffEmail;
-            }
-            set
-            {
-                mStaffEmail = value;
-            }
+            return mStaffName;
         }
+        set
+        {
+            mStaffName = value;
+        }
+    }
 
-        private String mStaffPassword;
-        public String StaffPassword
+    private String mStaffEmail;
+
+    public String StaffEmail
+    {
+        get
         {
-            get
-            {
-                return mStaffPassword;
-            }
-            set
-            {
-                mStaffPassword = value;
-            }
+            return mStaffEmail;
         }
-        private DateTime mStaffStartDate;
-        public DateTime StaffStartDate
+        set
         {
-            get
-            {
-                return mStaffStartDate;
-            }
-            set
-            {
-                mStaffStartDate = value;
-            }
+            mStaffEmail = value;
         }
-        private float mStaffSalary;
-        public float StaffSalary
+    }
+
+    private String mStaffPassword;
+    public String StaffPassword
+    {
+        get
         {
-            get
-            {
-                return mStaffSalary;
-            }
-            set
-            {
-                mStaffSalary = value;
-            }
+            return mStaffPassword;
         }
-        private Boolean mStaffManager;
-        public Boolean StaffManager
+        set
         {
-            get
-            {
-                return mStaffManager;
-            }
-            set
-            {
-                mStaffManager = value;
-            }
+            mStaffPassword = value;
+        }
+    }
+    private DateTime mStaffStartDate;
+    public DateTime StaffStartDate
+    {
+        get
+        {
+            return mStaffStartDate;
+        }
+        set
+        {
+            mStaffStartDate = value;
+        }
+    }
+    private float mStaffSalary;
+    public float StaffSalary
+    {
+        get
+        {
+            return mStaffSalary;
+        }
+        set
+        {
+            mStaffSalary = value;
+        }
+    }
+    private Boolean mStaffManager;
+    public Boolean StaffManager
+    {
+        get
+        {
+            return mStaffManager;
+        }
+        set
+        {
+            mStaffManager = value;
         }
     }
 }

@@ -110,7 +110,7 @@ namespace Testing4
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 OrderId = 21;
+            Int32 OrderId = 6;
             //invoke the method
             Found = AnOrder.Find(OrderId);
             //test to see if the result is true
@@ -123,9 +123,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 6;
             Found = AnOrder.Find(OrderId);
-            if(AnOrder.OrderId !=21)
+            if(AnOrder.OrderId !=6)
             {
                 OK = false;
             }
@@ -136,9 +136,9 @@ namespace Testing4
         {  clsOrder AnOrder = new clsOrder();
             Boolean Found = false; 
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 6;
             Found= AnOrder.Find(OrderId);
-            if(AnOrder.CustomerId !=123)
+            if(AnOrder.CustomerId !=15)
             { 
             OK = false;
             }
@@ -149,9 +149,9 @@ namespace Testing4
         { clsOrder AnOrder = new clsOrder();
         Boolean Found = false;
         Boolean OK = true;
-        Int32 OrderId = 21;
+        Int32 OrderId = 6;
         Found = AnOrder.Find(OrderId);
-            if (AnOrder.ItemId != 23)
+            if (AnOrder.ItemId != 31)
             {  OK = false;
             }
             Assert.IsTrue(OK);
@@ -161,9 +161,9 @@ namespace Testing4
         { clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 6;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.OrderDate != Convert.ToDateTime("23/12/2022"))
+            if (AnOrder.OrderDate != Convert.ToDateTime("01/07/2023"))
             {
                 OK = false;
             }
@@ -175,9 +175,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 6;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.TotalAmount!= 50)
+            if (AnOrder.TotalAmount!= 60.99)
             {
                 OK = false;
             }
@@ -189,9 +189,9 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 6;
             Found = AnOrder.Find(OrderId);
-            if (AnOrder.ShippingAddress != "61 Meadwell Road")
+            if (AnOrder.ShippingAddress != "london road")
             {
                 OK = false;
             }
@@ -203,7 +203,7 @@ namespace Testing4
             clsOrder AnOrder = new clsOrder();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 OrderId = 21;
+            Int32 OrderId = 6;
             Found = AnOrder.Find(OrderId);
             if (AnOrder.OrderCompleted != true)
             {

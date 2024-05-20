@@ -87,8 +87,25 @@ namespace ClassLibrary
             DB.AddParameter("@stockRestockThreshold", mThisStock.stockRestockThreshold);
             DB.AddParameter("@stockLastRestocked", mThisStock.stockLastRestocked);
             DB.AddParameter("@stockAutoRestock", mThisStock.stockAutoRestock);
-
+            // Executes the procedure
             return DB.Execute("sproc_tblStock_Insert");
+        }
+
+        // Updates an existing record based on the vakues of this address
+        public void Update()
+        {
+            // connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            // Set the parameters for the stored procedure
+            DB.AddParameter("@stockId", mThisStock.stockId);
+            DB.AddParameter("@stockName", mThisStock.stockName);
+            DB.AddParameter("@stockDescription", mThisStock.stockDescription);
+            DB.AddParameter("@stockQuantity", mThisStock.stockQuantity);
+            DB.AddParameter("@stockRestockThreshold", mThisStock.stockRestockThreshold);
+            DB.AddParameter("@stockLastRestocked", mThisStock.stockLastRestocked);
+            DB.AddParameter("@stockAutoRestock", mThisStock.stockAutoRestock);
+            // Executes the procedure
+            DB.Execute("sproc_tblStock_Update");
         }
     }
 }

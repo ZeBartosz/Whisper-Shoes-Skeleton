@@ -258,7 +258,7 @@ namespace Testing3
             //test to see that the result is correct
             Assert.AreEqual(Error, "");
         }
-
+        //validate customer first name
         [TestMethod]
 
         public void CustomerFirstNameMinLessOne()
@@ -342,12 +342,261 @@ namespace Testing3
             Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
             Assert.AreNotEqual(Error, "");
         }
+        //------validate customer last name
 
+        [TestMethod]
+        public void CustomerLastNameMinLessOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Last_Name = "";
+            //invoke method
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
 
+        }
 
+        [TestMethod]
 
+        public void CustomerLastNameMin()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Last_Name = "a";
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
 
+        }
+
+        [TestMethod]
+        public void CustomerLastNameMinPlusOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Last_Name = "aa";
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerLastNameMaxLessOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Last_Name = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; // max minus one is 49
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerLastNameMax()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Last_Name = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //max is 50
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void CustomerLastNameMaxPlusOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Last_Name = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //max plus one is 51
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void CustomerLastNameExtremeMax()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Last_Name = "";
+            Customer_Last_Name.PadRight(500, 'a');
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        //-------------Validate Customer Address
+        [TestMethod]
+
+        public void CustomerAddressMinLessOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Address = "";
+            //invoke method
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerAddressMin()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Address = "a";
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerAddressMinPlusOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Address = "aa";
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerAddressMaxLessOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Address = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; // max minus one is 49
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerAddressMax()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Address = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //max is 50
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void CustomerAddressMaxPlusOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Address = "aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa"; //max plus one is 51
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void CustomerAddressExtremeMax()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Address = "";
+            Customer_Address.PadRight(500, 'a');
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        // Validate customer phone number -------------
+        [TestMethod]
+
+        public void CustomerPhoneNmbrMinLessOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Phone_Nmbr = "";
+            //invoke method
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            //test to see that the result is correct
+            Assert.AreNotEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerPhoneNmbrMin()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Phone_Nmbr = "a";
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerPhoneNmbrMinPlusOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Phone_Nmbr = "aa";
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerPhoneNmbrMaxLessOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Phone_Nmbr = "aaaaaaaaa"; // max minus one is 9
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerPhoneNmbrMax()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Phone_Nmbr = "aaaaaaaaaa"; //max is 10
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void CustomerPhoneNmbrMaxPlusOne()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Phone_Nmbr = "aaaaaaaaaaa"; //max plus one is 11
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+
+        public void CustomerPhoneNmbrExtremeMax()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            string Customer_Phone_Nmbr = "";
+            Customer_Phone_Nmbr.PadRight(500, 'a');
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreNotEqual(Error, "");
+        }
+        //Need to do customer dob practical 10
 
     }
-        
+
 }

@@ -25,4 +25,12 @@ public partial class _1_List : System.Web.UI.Page
         lstStockList.DataTextField = "stockName";
         lstStockList.DataBind();
     }
+
+    protected void btnAddNew_Click(object sender, EventArgs e)
+    {
+        // Store -1 the session object to indicate this is a new record
+        Session["StockId"] = -1;
+        // Redirect to the data entry page
+        Response.Redirect("StockDataEntry.aspx");
+    }
 }

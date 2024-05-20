@@ -13,9 +13,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
     protected void btnAdd_Click(object sender, EventArgs e)
     {
-        //create a new instance of clsStock
+        // create a new instance of clsStock
         clsStock aStock = new clsStock();
-        //captures the stock name
+        // captures the stock name
         String Name = txtStockName.Text;
         String Description = txtStockDescription.Text;
         String Quantity = txtStockQuantity.Text;
@@ -28,17 +28,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         if (Error == "")
         {
-            //captures the stock name
+            // captures the stock name
             aStock.stockName = Name;
             aStock.stockDescription = Description;
-            //stockQuantity = Convert.ToInt32(Quantity);
-            //aStock.stockRestockThreshold = Convert.ToInt32(RestockThreshold);
+            aStock.stockQuantity = Convert.ToInt32(Quantity);
+            aStock.stockRestockThreshold = Convert.ToInt32(RestockThreshold);
             aStock.stockLastRestocked = Convert.ToDateTime(LastRestocked);
-            //aStock.stockAutoRestock = chkStockAutoRestock.Checked;
-            //stores the name in the session object
-            Session["aStock"] = aStock;
-            //navigate to the viewer
-            Response.Redirect("StockViewer.aspx");
+            aStock.stockAutoRestock = chkStockAutoRestock.Checked;
+            // create a new instance of the address collection
+            clsStockCollection allStock = new clsStockCollection();
+            // set the ThisStock property 
+            allStock.ThisStock = aStock;
+            //add the new record
+            allStock.Add();
+            // navigate to the viewer
+            Response.Redirect("StockList.aspx");
 
         }
         else

@@ -8,11 +8,11 @@ namespace ClassLibrary
     public class clsStockCollection
     {
 
-        public clsStock ThisStock { get; set; }
-
         //private variables
         List<clsStock> mStockList = new List<clsStock>();
         private Int32 mCount;
+        clsStock mThisStock = new clsStock();
+
         public List<clsStock> StockList
         {
             get 
@@ -34,6 +34,18 @@ namespace ClassLibrary
             set
             {
 
+            }
+        }
+
+        public clsStock ThisStock
+        {
+            get
+            {
+                return mThisStock;
+            }
+            set
+            {
+                mThisStock = value;
             }
         }
         
@@ -63,5 +75,20 @@ namespace ClassLibrary
 
         }
 
+        // Adds a record to the database based on the values of mThisStock
+        public int Add()
+        {
+            // connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            // Set the parameters for the stored procedure
+            DB.AddParameter("@stockName", mThisStock.stockName);
+            DB.AddParameter("@stockDescription", mThisStock.stockDescription);
+            DB.AddParameter("@stockQuantity", mThisStock.stockQuantity);
+            DB.AddParameter("@stockRestockThreshold", mThisStock.stockRestockThreshold);
+            DB.AddParameter("@stockLastRestocked", mThisStock.stockLastRestocked);
+            DB.AddParameter("@stockAutoRestock", mThisStock.stockAutoRestock);
+
+            return DB.Execute("sproc_tblStock_Insert");
+        }
     }
 }

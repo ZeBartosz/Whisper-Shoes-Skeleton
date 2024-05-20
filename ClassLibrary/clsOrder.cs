@@ -18,7 +18,7 @@ namespace ClassLibrary
         }
 
 
-        private Int32 mCustomerId; 
+        private Int32 mCustomerId;
         public Int32 CustomerId
         {
             get
@@ -87,26 +87,38 @@ namespace ClassLibrary
         {
             get
             {
-                return OrderCompleted;
+                return mOrderCompleted;
             }
             set
             {
                 mOrderCompleted = value;
             }
         }
-        public bool Find(int orderId)
+
+
+
+
+        public bool Find(int OrderId)
         {
-            mOrderId = 21;
-            mCustomerId = 123;
-            mItemId = 23;
-            mOrderDate = Convert.ToDateTime("23/12/2022");
-            mTotalAmount = 50;
-            mShippingAddress = "61 Meadwell Road";
-            mOrderCompleted = true;
-            //always return true
-            return true;
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@OrderId", OrderId);
+            DB.Execute("sproc_tblOrder_FilterByOrderId");
+            if (DB.Count == 1)
+            {
+                mOrderId = Convert.ToInt32(DB.DataTable.Rows[0]["OrderId"]);
+                mCustomerId = Convert.ToInt32(DB.DataTable.Rows[0]["CustomerId"]);
+                mItemId = Convert.ToInt32(DB.DataTable.Rows[0]["ItemId"]);
+                mOrderDate = Convert.ToDateTime(DB.DataTable.Rows[0]["OrderDate"]);
+                mTotalAmount = (float)Convert.ToDecimal(DB.DataTable.Rows[0]["TotalAmount"]);
+                mShippingAddress = Convert.ToString(DB.DataTable.Rows[0]["ShippingAddress"]);
+                mOrderCompleted = Convert.ToBoolean(DB.DataTable.Rows[0]["OrderCompleted"]);
+                return true;
+            }
+            else
+            {
+                return false;
+            }
+
         }
-
     }
-
 }

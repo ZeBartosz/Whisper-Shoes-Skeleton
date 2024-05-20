@@ -144,7 +144,40 @@ namespace ClassLibrary
             {
                 Error = Error + "The customers first name must be less than 50 characters : ";
             }
+
+            if (customer_Last_Name.Length == 0)
+            {
+                //record the error
+                Error = Error + "The Customer's last name may not be blank : ";
+            }
+            if (customer_Last_Name.Length > 50)
+            {
+                Error = Error + "The customers last name must be less than 50 characters : ";
+            }
+            if (customer_Address.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer's address may not be blank : ";
+            }
+            if (customer_Address.Length > 50)
+            {
+                Error = Error + "The customers address must be less than 50 characters : ";
+            }
+
+            if (customer_Phone_Nmbr.Length == 0)
+            {
+                //record the error
+                Error = Error + "The customer's phone number may not be blank : ";
+            }
+            if (customer_Phone_Nmbr.Length > 10)
+            {
+                Error = Error + "The customers phone number must be less than 10 characters : ";
+            }
             return Error;
+
+            //Need to do CustomerDOB practical 10
+           
+
             
         }
 

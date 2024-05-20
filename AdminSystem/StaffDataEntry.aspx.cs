@@ -12,20 +12,38 @@ public partial class _1_DataEntry : System.Web.UI.Page
     }
     protected void btnOK_Click(object sender, EventArgs e)
     {
-        //create a new instance
+        //create an instance
         clsStaff Staff = new clsStaff();
-        //capture the name
-        Staff.StaffName = txtStaffName.Text;
-        Staff.StaffEmail = txtStaffEmail.Text;
-        Staff.StaffPassword = txtStaffPassword.Text;
-        Staff.StaffStartDate = Convert.ToDateTime(txtStaffStartDate.Text);
-        Staff.StaffSalary = Convert.ToInt32(txtStaffSalary.Text);
-        Staff.StaffManager = chkStaffManager.Checked;
+        //capture data
+        string StaffName = txtStaffName.Text;
+        string StaffEmail = txtStaffEmail.Text;
+        string StaffPassword = txtStaffPassword.Text;
+        string StaffStartDate = txtStaffStartDate.Text;
+        string StaffSalary = txtStaffSalary.Text;
+        string StaffManager = chkStaffManager.Text;
+        //varoable to store error messages
+        string Error = "";
+        //validate the data 
+        Error = Staff.Valid(StaffName, StaffEmail, StaffPassword, StaffStartDate);
+        if (Error == "")
+        {
+            //capture data
+            Staff.StaffName = StaffName;
+            Staff.StaffEmail = StaffEmail;
+            Staff.StaffPassword = StaffPassword;
+            Staff.StaffStartDate = Convert.ToDateTime(StaffStartDate);
 
-        //store the name in a session object
-        Session["Staff"] = Staff;
-        //navigate to the view page
-        Response.Redirect("StaffViewer.aspx");
+
+            //store the name in a session object
+            Session["Staff"] = Staff;
+            //navigate to the view page
+            Response.Redirect("StaffViewer.aspx");
+        }
+        else
+        {
+            //display the error message
+            lblError.Text = Error;
+        }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

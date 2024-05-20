@@ -73,13 +73,13 @@ namespace Testing1
         [TestMethod]
         public void AddMethodOK()
         {
-            //creates an instance of the class 
+            // creates an instance of the class 
             clsStockCollection allStock = new clsStockCollection();
-            //creates the item of test data
+            // creates the item of test data
             clsStock aStock = new clsStock();
-            //variable to store the primary key
+            // variable to store the primary key
             Int32 PrimaryKey = 0;
-            //set its properties 
+            // set its properties 
             aStock.stockId = 1;
             aStock.stockName = "adidas";
             aStock.stockDescription = "TestTestTestTestTest";
@@ -87,15 +87,58 @@ namespace Testing1
             aStock.stockRestockThreshold = 5;
             aStock.stockLastRestocked = DateTime.Now;
             aStock.stockAutoRestock = true;
-            //set thisStock to the the test data
+            // set thisStock to the the test data
             allStock.ThisStock = aStock;
-            //add the record
+            // add the record
             PrimaryKey = allStock.Add();
-            //set the primary key of the test data
+            // set the primary key of the test data
             aStock.stockId = PrimaryKey;
-            //find the record
+            // find the record
             allStock.ThisStock.Find(PrimaryKey);
             Assert.AreEqual(allStock.ThisStock, aStock);
+
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            // creates an instance of the class 
+            clsStockCollection allStock = new clsStockCollection();
+            // creates the item of test data
+            clsStock aStock = new clsStock();
+            // variable to store the primary key
+            Int32 PrimaryKey = 0;
+            // set its properties 
+            aStock.stockId = 1;
+            aStock.stockName = "adidas";
+            aStock.stockDescription = "TestTestTestTestTest";
+            aStock.stockQuantity = 10;
+            aStock.stockRestockThreshold = 5;
+            aStock.stockLastRestocked = DateTime.Now;
+            aStock.stockAutoRestock = true;
+            // set thisStock to the the test data
+            allStock.ThisStock = aStock;
+            // add the record
+            PrimaryKey  = allStock.Add();
+            // set the primary key of the test data
+            aStock.stockId = PrimaryKey;
+            // modify the test record
+            aStock.stockName = "adidas";
+            aStock.stockDescription = "TestTestTestTestTest";
+            aStock.stockQuantity = 13;
+            aStock.stockRestockThreshold = 7;
+            aStock.stockLastRestocked = DateTime.Now;
+            aStock.stockAutoRestock = false;
+            // set the record based on the new data
+            allStock.ThisStock = aStock;
+            // update the record 
+            allStock.Update();
+            // find the record
+            allStock.ThisStock.Find(PrimaryKey);
+            // test
+            Assert.AreEqual(allStock.ThisStock, aStock);
+
+
 
         }
 

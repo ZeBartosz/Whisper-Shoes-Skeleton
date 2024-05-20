@@ -8,9 +8,37 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 stockId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        // get the number of the stock to be processed
+        stockId = Convert.ToInt32(Session["stockId"]);
+        if (IsPostBack == false)
+        {
+            // if this is the not a new record
+            if (stockId != -1)
+            {
+                DisplayStock();
+            }
+        }
     }
+
+    private void DisplayStock()
+    {
+        // create an instance of the address book
+        clsStockCollection allStock = new clsStockCollection();
+        // find the record to update
+        allStock.ThisStock.Find(stockId);
+        // display the data for the record
+        txtStockId.Text = allStock.ThisStock.stockId.ToString();
+        txtStockName.Text = allStock.ThisStock.stockName.ToString();
+        txtStockDescription.Text = allStock.ThisStock.stockDescription.ToString();
+        txtStockQuantity.Text = allStock.ThisStock.stockQuantity.ToString();
+        txtStockRestockThreshold.Text = allStock.ThisStock.stockRestockThreshold.ToString();
+        txtStockLastRestocked.Text = allStock.ThisStock.stockLastRestocked.ToString();
+        chkStockAutoRestock.Checked = allStock.ThisStock.stockAutoRestock;
+    }
+
     protected void btnAdd_Click(object sender, EventArgs e)
     {
         // create a new instance of clsStock
@@ -29,6 +57,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             // captures the stock name
+            aStock.stockId = stockId;
             aStock.stockName = Name;
             aStock.stockDescription = Description;
             aStock.stockQuantity = Convert.ToInt32(Quantity);
@@ -37,10 +66,25 @@ public partial class _1_DataEntry : System.Web.UI.Page
             aStock.stockAutoRestock = chkStockAutoRestock.Checked;
             // create a new instance of the address collection
             clsStockCollection allStock = new clsStockCollection();
-            // set the ThisStock property 
-            allStock.ThisStock = aStock;
-            //add the new record
-            allStock.Add();
+            // if this is a new record 
+            if (stockId == -1)
+            {
+                // set the ThisStock property
+                allStock.ThisStock = aStock;
+                // add the new record
+                allStock.Add();
+            }
+            // otherwise it must be an update
+            else
+            {
+                // find the record to update
+                allStock.ThisStock.Find(stockId);
+                // set the ThisStock property
+                allStock.ThisStock = aStock;
+                // update the record
+                allStock.Update();
+            }
+
             // navigate to the viewer
             Response.Redirect("StockList.aspx");
 

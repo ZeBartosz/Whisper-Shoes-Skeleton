@@ -31,11 +31,11 @@ namespace Testing2
             TestItem.StaffName = "Test Name";
             TestItem.StaffEmail = "Test@email.com";
             TestItem.StaffPassword = "TestPassword";
-            TestItem.StaffStartDate= DateTime.Now;
+            TestItem.StaffStartDate = DateTime.Now;
             TestItem.StaffSalary = 1;
             TestItem.StaffManager = true;
-           //add the item
-           TestList.Add(TestItem);
+            //add the item
+            TestList.Add(TestItem);
             //assign the data to the property
             AllStaff.StaffList = TestList;
             //test to see that the two values are the same
@@ -75,6 +75,34 @@ namespace Testing2
             AllStaff.StaffList = TestList;
             Assert.AreEqual(AllStaff.Count, TestList.Count);
         }
+
+        [TestMethod]
+        public void AddMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            //create the item of test date
+            clsStaff TestItem = new clsStaff();
+            //variable to store the primary key
+            Int32 PrimaryKey = 0;
+            //set its properties
+            TestItem.StaffName = "Test Name";
+            TestItem.StaffEmail = "Test@email.com";
+            TestItem.StaffPassword = "TestPassword";
+            TestItem.StaffStartDate = DateTime.Now;
+            TestItem.StaffSalary = 1;
+            TestItem.StaffManager = true;
+            //set this to the test data
+            AllStaff.ThisStaff = TestItem;
+            //add the record
+            PrimaryKey = AllStaff.Add();
+            //set the primary key of the test data
+            TestItem.StaffId = PrimaryKey;
+            //find the record
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            //test to see if values are the same
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);  
+        }
+
 
     }
 }

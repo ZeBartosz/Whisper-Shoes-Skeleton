@@ -32,12 +32,16 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Staff.StaffEmail = StaffEmail;
             Staff.StaffPassword = StaffPassword;
             Staff.StaffStartDate = Convert.ToDateTime(StaffStartDate);
-
-
-            //store the name in a session object
-            Session["Staff"] = Staff;
+            Staff.StaffSalary = Convert.ToInt32(StaffSalary);
+            Staff.StaffManager = chkStaffManager.Checked;
+            //create new instance
+            clsStaffCollection StaffList = new clsStaffCollection();
+            //set the ThisStaff property
+            StaffList.ThisStaff = Staff;
+            //add the record
+            StaffList.Add();
             //navigate to the view page
-            Response.Redirect("StaffViewer.aspx");
+            Response.Redirect("StaffList.aspx");
         }
         else
         {

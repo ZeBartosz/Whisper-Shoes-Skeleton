@@ -563,7 +563,6 @@ namespace Testing3
         }
 
         [TestMethod]
-
         public void CustomerPhoneNmbrMax()
         {
             clsCustomers ACustomer = new clsCustomers();
@@ -596,6 +595,37 @@ namespace Testing3
             Assert.AreNotEqual(Error, "");
         }
         //Need to do customer dob practical 10
+        [TestMethod]
+
+        public void CustomerDOBExtremeMin()    //date cannot be more than 100 years in the past
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.AddYears(-100);
+            string Customer_DOB = TestDate.ToString();
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+
+        [TestMethod]
+
+        public void CustomerDOBMin()
+        {
+            clsCustomers ACustomer = new clsCustomers();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.AddYears(-16);
+            string Customer_DOB = TestDate.ToString();
+            Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+            Assert.AreEqual(Error, "");
+
+        }
+        //min -1 = 15
+        //min + 1 = 17
+
+            
 
     }
 

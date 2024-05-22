@@ -135,6 +135,8 @@ namespace ClassLibrary
         {
             //create string variable to store the error
             String Error = "";
+            DateTime DateTemp;
+
             if (customer_First_Name.Length == 0)
             {
                 //record the error
@@ -145,6 +147,19 @@ namespace ClassLibrary
                 Error = Error + "The customers first name must be less than 50 characters : ";
             }
 
+            DateTemp = Convert.ToDateTime(customer_DOB);
+
+            if (DateTemp < DateTemp.AddYears(-100))
+            {
+                Error = Error + "The customers date of birth cannot be more than 100 years in the past : ";
+            }
+            if (DateTemp < DateTemp.AddYears(-16))
+            {
+                Error = Error + "The customer must be over 16 : ";
+            }
+
+
+               
             if (customer_Last_Name.Length == 0)
             {
                 //record the error
@@ -173,6 +188,8 @@ namespace ClassLibrary
             {
                 Error = Error + "The customers phone number must be less than 10 characters : ";
             }
+
+
             return Error;
 
             //Need to do CustomerDOB practical 10

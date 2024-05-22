@@ -2,6 +2,7 @@
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
 using System.Collections.Generic;
+using System.Runtime.Remoting.Messaging;
 
 namespace Testing1
 {
@@ -174,6 +175,61 @@ namespace Testing1
             // test
             Assert.IsFalse(Found);
             
+        }
+
+        [TestMethod]
+        public void ReportByStockName()
+        {
+            // create an instance of class containig unfiled
+            clsStockCollection allStock = new clsStockCollection();
+            // create an instance of the filtered data
+            clsStockCollection FilteredStcok = new clsStockCollection();
+            // apply a blank string (returns all records)
+            FilteredStcok.ReportByStockName("");
+            // test to see that the two values are the same
+            Assert.AreEqual(allStock.Count, FilteredStcok.Count);
+         
+        }
+
+        [TestMethod]
+        public void ReportByStockNameNoneFound()
+        {
+            // create an instance of the filtered data
+            clsStockCollection FilteredStcok = new clsStockCollection();
+            // apply a blank string (returns all records)
+            FilteredStcok.ReportByStockName("****");
+            // test to see that there are no records
+            Assert.AreEqual(0, FilteredStcok.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStockNameTestDataFound()
+        {
+            // create an instance of the filtered data
+            clsStockCollection FilteredStock = new clsStockCollection();
+            // variable to store the outcome
+            Boolean OK = true;
+            // apply a stock name that doesn't exist
+            FilteredStock.ReportByStockName("nike");
+            // checl that the correct number of records are found 
+            if (FilteredStock.Count == 2)
+            {
+                // check to see that the first record is 2
+                if (FilteredStock.StockList[0].stockId != 2)
+                {
+                    OK = false;
+                }
+                if (FilteredStock.StockList[1].stockId != 34)
+                {
+                    OK = false;
+                }
+
+            }
+            else 
+            {
+                OK = false;              
+            }
+            Assert.IsTrue(OK);
         }
 
 

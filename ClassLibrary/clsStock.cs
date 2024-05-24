@@ -131,6 +131,8 @@ namespace ClassLibrary
             // Variable which stores Error
             String Error = "";
             DateTime DateTemp;
+            Int32 QuantityTemp;
+            Int32 StockRestockedTemp;
 
             // stockName validation
             // Checking if the StockName variable is blank
@@ -157,10 +159,50 @@ namespace ClassLibrary
             }
 
             // stockQuantity Validation
-
+            try
+            {
+                QuantityTemp = Convert.ToInt32(stockQuantity);
+                if (QuantityTemp < 0) 
+                {
+                    Error = Error + "The quantity can't go below 0 : ";
+                }
+                if (QuantityTemp > 100)
+                {
+                    Error = Error + "The quanitiy can't go above 1000 : ";
+                }
+            }
+            catch 
+            {
+                Error = Error + "The quantity data is invalid : ";
+            }
 
             // StockRestockThreshold validation
-
+            try
+            {
+                QuantityTemp = Convert.ToInt32(stockQuantity);
+                StockRestockedTemp = Convert.ToInt32(stockRestockThreshold);
+                if (StockRestockedTemp < 0)
+                {
+                    Error = Error + "The restock threshold can't go below below : ";
+                }
+             
+            
+                if (StockRestockedTemp > QuantityTemp - 1)
+                {
+                    if (QuantityTemp == 0)
+                    {
+                    
+                    }  
+                    else
+                    {
+                        Error = Error + "The restock threshold can't go above the stock quantity : ";
+                    }   
+                }
+            }
+            catch
+            {
+                Error = Error + "The restock threshold data is invalid : ";
+            }
 
             // StockLastRestocked validation
             DateTime DateComp = DateTime.Now.Date;
@@ -183,7 +225,7 @@ namespace ClassLibrary
             }
             catch
             {
-                Error = Error + "The date was invaid date";
+                Error = Error + "The date was invaid date : ";
             }
 
 

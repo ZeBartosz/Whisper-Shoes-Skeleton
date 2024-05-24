@@ -9,7 +9,7 @@
 <body>
     <form id="form1" runat="server">
 
-        <asp:Label ID="lblStockId" runat="server" style="z-index: 1; left: 10px; top: 39px; position: absolute; right: 608px" Text="Stock ID"></asp:Label>
+        <asp:Label ID="lblStockId" runat="server" style="z-index: 1; left: 10px; top: 39px; position: absolute; right: 608px" Text="StockID"></asp:Label>
         <asp:TextBox ID="txtStockId" runat="server" style="z-index: 1; left: 172px; top: 38px; position: absolute"></asp:TextBox>
         <asp:Button ID="btnFind" runat="server" Style="z-index: 1; left: 375px; top: 38px; position: absolute" Text="FIND" OnClick="btnFind_Click" />
 

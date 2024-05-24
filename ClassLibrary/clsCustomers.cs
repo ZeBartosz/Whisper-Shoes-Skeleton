@@ -149,17 +149,21 @@ namespace ClassLibrary
 
             DateTemp = Convert.ToDateTime(customer_DOB);
 
-            if (DateTemp < DateTemp.AddYears(-100))
+            if (DateTemp < DateTemp.AddYears(-110))
             {
-                Error = Error + "The customers date of birth cannot be more than 100 years in the past : ";
+                Error = Error + "The customers date of birth cannot be more than 150 years in the past : ";
             }
             if (DateTemp < DateTemp.AddYears(-16))
             {
                 Error = Error + "The customer must be over 16 : ";
             }
+            if (DateTemp > DateTime.Now.Date)
+            {
+                Error = Error + "The customers date of birth cannot be in the future : ";
+            }
 
 
-               
+
             if (customer_Last_Name.Length == 0)
             {
                 //record the error
@@ -191,8 +195,6 @@ namespace ClassLibrary
 
 
             return Error;
-
-            //Need to do CustomerDOB practical 10
            
 
             

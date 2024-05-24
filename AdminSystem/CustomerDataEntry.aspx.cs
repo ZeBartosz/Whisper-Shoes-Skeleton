@@ -18,23 +18,30 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsCustomers
         clsCustomers ACustomer = new clsCustomers();
-        //get firstname
-        ACustomer.Customer_First_Name = txtCustomerFirstName.Text;
-        //get last name
-        ACustomer.Customer_Last_Name = txtCustomerLastName.Text;
-        //Get DOB
-        ACustomer.Customer_DOB = Convert.ToDateTime(DateTime.Now);
-        //Get Phone number
-        ACustomer.Customer_Phone_Nmbr = txtCustomerPhoneNmbr.Text;
-        //get Address
-        ACustomer.Customer_Address = txtCustomerAddress.Text;
-        //save payment info
-        ACustomer.Save_Payment_Info = ChkSavePaymentInfo.Checked;
-        //store the first name in session object
-        Session["ACustomer"] = ACustomer;
-        //navigate to view page
-        Response.Redirect("CustomerViewer.aspx");
+        string Customer_First_Name = txtCustomerFirstName.Text;
+        string Customer_Last_Name = txtCustomerLastName.Text;
+        string Customer_DOB = txtCustomerDOB.Text;
+        string Customer_Phone_Nmbr = txtCustomerPhoneNmbr.Text;
+        string Customer_Address = txtCustomerAddress.Text;
+        string Save_Payment_Info = ChkSavePaymentInfo.Text;
+        string Error = "";
+        Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
+        if (Error == "")
+        {
+            ACustomer.Customer_First_Name = Customer_First_Name;
+            ACustomer.Customer_Last_Name = Customer_Last_Name;
+            ACustomer.Customer_DOB = Convert.ToDateTime(DateTime.Now);
+            ACustomer.Customer_Phone_Nmbr = Customer_Phone_Nmbr;
+            ACustomer.Customer_Address = Customer_Address;
+            Session["ACustomer"] = ACustomer;
+            Response.Redirect("CustomerViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
     }
+
 
     protected void BtnFind_Click(object sender, EventArgs e)
     {

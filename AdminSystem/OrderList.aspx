@@ -10,6 +10,7 @@
     <form id="form1" runat="server">
         <div>
         </div>
+        <asp:ListBox ID="lstOrderList" runat="server" Height="418px" Width="488px" OnSelectedIndexChanged="lstOrderList_SelectedIndexChanged"></asp:ListBox>
     </form>
 </body>
 </html>

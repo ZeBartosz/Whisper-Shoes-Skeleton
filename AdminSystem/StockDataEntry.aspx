@@ -33,7 +33,7 @@
         <asp:Label ID="lblStockLastRestocked" runat="server" style="z-index: 1; left: 10px; top: 255px; position: absolute" Text="Stock Last Restocked" width="154px"></asp:Label>
 
         <asp:Button ID="btnAdd" runat="server" style="z-index: 1; left: 66px; top: 390px; position: absolute" Text="OK" OnClick="btnAdd_Click" />
-        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 133px; top: 390px; position: absolute" Text="Cancel" />
+        <asp:Button ID="btnCancel" runat="server" style="z-index: 1; left: 133px; top: 390px; position: absolute" Text="Cancel" OnClick="btnCancel_Click" />
     </form>
 </body>
 </html>

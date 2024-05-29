@@ -464,7 +464,104 @@ namespace Testing1
         }
 
         // Validating stockRestockThreshold
+        [TestMethod]
+        public void stockRestockThresholdMinLessOne()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            int TestData = -1;
+            String stockRestockThreshold = Convert.ToString(TestData);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
 
+        [TestMethod]
+        public void stockRestockThresholdMin()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            int TestData = 0;
+            String stockRestockThreshold = Convert.ToString(TestData);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void stockRestockThresholdMaxLessOne()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            int TestData = 0;
+            int TestQuantity = 2;
+            String stockQuantity = Convert.ToString(TestQuantity);
+            String stockRestockThreshold = Convert.ToString(TestData);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void stockRestockThresholdMax()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            int TestData = 0;
+            int TestQuantity = 1;
+            String stockQuantity = Convert.ToString(TestQuantity);
+            String stockRestockThreshold = Convert.ToString(TestData);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void stockRestockThresholdMaxPlusOne()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            int TestData = 2;
+            int TestQuantity = 1;
+            String stockQuantity = Convert.ToString(TestQuantity);
+            String stockRestockThreshold = Convert.ToString(TestData);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void stockRestockThresholdExtremeMax()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            int TestData = 500;
+            int TestQuantity = 1;
+            String stockQuantity = Convert.ToString(TestQuantity);
+            String stockRestockThreshold = Convert.ToString(TestData);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void stockRestockThresholdInvalidDataType()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            String stockRestockThreshold = "test";
+            int TestQuantity = 1;
+            String stockQuantity = Convert.ToString(TestQuantity);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void stockRestockThresholdQuantityZero()
+        {
+            clsStock aStock = new clsStock();
+            String Error = "";
+            int TestData = 0;
+            int TestQuantity = 0;
+            String stockQuantity = Convert.ToString(TestQuantity);
+            String stockRestockThreshold = Convert.ToString(TestData);
+            Error = aStock.Valid(stockName, stockDescription, stockQuantity, stockRestockThreshold, stockLastRestocked);
+            Assert.AreEqual(Error, "");
+        }
 
 
         // Validating stockLastRestocked

@@ -1,22 +1,8 @@
-﻿Build started at 05:20...
+﻿Build started at 03:04...
 1>------ Build started: Project: ClassLibrary, Configuration: Debug Any CPU ------
-1>  ClassLibrary -> H:\final\ClassLibrary\bin\Debug\ClassLibrary.dll
-2>------ Build started: Project: TestingStock, Configuration: Debug Any CPU ------
-3>------ Build started: Project: TestingStaff, Configuration: Debug Any CPU ------
-4>------ Build started: Project: TestingCustomer, Configuration: Debug Any CPU ------
-5>------ Build started: Project: TestingOrder, Configuration: Debug Any CPU ------
-6>------ Build started: Project: TestingReviews, Configuration: Debug Any CPU ------
-7>------ Build started: Project: Testing6, Configuration: Debug Any CPU ------
-8>------ Build started: Project: AdminSystem, Configuration: Debug Any CPU ------
-8>Validating Web Site
-2>  TestingStock -> H:\final\Testing1\bin\Debug\Testing1.dll
-7>  Testing6 -> H:\final\Testing6\bin\Debug\Testing6.dll
-5>  TestingOrder -> H:\final\Testing4\bin\Debug\Testing4.dll
-3>  TestingStaff -> H:\final\Testing2\bin\Debug\Testing2.dll
-6>  TestingReviews -> H:\final\Testing5\bin\Debug\Testing5.dll
-4>  TestingCustomer -> H:\final\Testing3\bin\Debug\Testing3.dll
-8>Building directory '/'.
-8>
-8>Validation Complete
-========== Build: 8 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
-========== Build completed at 05:20 and took 07.069 seconds ==========
+1>H:\clone 2\ClassLibrary\clsStockCollection.cs(13,23,13,29): warning CS0169: The field 'clsStockCollection.mCount' is never used
+1>  ClassLibrary -> H:\clone 2\ClassLibrary\bin\Debug\ClassLibrary.dll
+2>------ Build started: Project: TestingOrder, Configuration: Debug Any CPU ------
+2>  TestingOrder -> H:\clone 2\Testing4\bin\Debug\Testing4.dll
+========== Build: 2 succeeded, 0 failed, 0 up-to-date, 0 skipped ==========
+========== Build completed at 03:04 and took 03.291 seconds ==========

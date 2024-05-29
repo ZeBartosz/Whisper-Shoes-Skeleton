@@ -19,10 +19,29 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //create a new instance of clsOrder
         clsOrder AnOrder = new clsOrder();
-        //capture the Shipping Address
-        AnOrder.ShippingAddress = txtShippingAddress.Text;
-        Session["AnOrder"] = AnOrder;
-        Response.Redirect("OrderViewer.aspx");
+        string CustomerId = txtCustomerId.Text;
+        string ItemId = txtItemId.Text;
+        string ShippingAddress = txtShippingAddress.Text;
+        string OrderDate = txtOrderDate.Text;
+        string TotalAmount = txtTotalAmount.Text;
+        string Active = chkActive.Text;
+        string Error = "";
+        Error = Error = AnOrder.Valid(CustomerId, ItemId, OrderDate, ShippingAddress, TotalAmount);
+        if (Error == "")
+        {
+            AnOrder.CustomerId = Convert.ToInt32(CustomerId);
+            AnOrder.ItemId = Convert.ToInt32(ItemId);
+            AnOrder.ShippingAddress = txtShippingAddress.Text;
+            AnOrder.OrderDate = Convert.ToDateTime(OrderDate);
+            AnOrder.TotalAmount = (float)Convert.ToDecimal(TotalAmount);
+            Session["AnOrder"] = AnOrder;
+            Response.Redirect("OrderViewer.aspx");
+        }
+        else
+        {
+            lblError.Text = Error;
+        }
+
     }
 
     protected void btnFind_Click(object sender, EventArgs e)

@@ -7,6 +7,8 @@ namespace ClassLibrary
     {
         //private data member for list
         List<clsCustomers> mCustomerList = new List<clsCustomers>();
+        //private data member for thiscustomer
+        clsCustomers mThisCustomer = new clsCustomers();
 
         public clsCustomerCollection()
         {
@@ -21,7 +23,7 @@ namespace ClassLibrary
             //get the count of records
             RecordCount = DB.Count;
             //while there are records to process
-            while(Index< RecordCount)
+            while(Index < RecordCount)
             {
                 //create a blank address
                 clsCustomers ACustomer = new clsCustomers();
@@ -33,6 +35,10 @@ namespace ClassLibrary
                 ACustomer.Customer_DOB = Convert.ToDateTime(DB.DataTable.Rows[Index]["Customer_DOB"]);
                 ACustomer.Customer_Address = Convert.ToString(DB.DataTable.Rows[Index]["Customer_Address"]);
                 ACustomer.Customer_Phone_Nmbr = Convert.ToString(DB.DataTable.Rows[Index]["Customer_Phone_Nmbr"]);
+
+                mCustomerList.Add(ACustomer);
+
+                Index ++;
 
             }
 
@@ -60,6 +66,33 @@ namespace ClassLibrary
                 //to do later
             }
         }
-        public clsCustomers ThisCustomer { get; set; }
+        public clsCustomers ThisCustomer
+        {
+            get
+            {
+                return mThisCustomer;
+            }
+            set
+            {
+                mThisCustomer = value;
+            }
+        }
+
+        public int Add()
+        {
+            //Adds a record to the database based on the values of mThisCustomer
+            //Connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Customer_First_Name", mThisCustomer.Customer_First_Name);
+            DB.AddParameter("@Customer_Last_Name", mThisCustomer.Customer_Last_Name);
+            DB.AddParameter("@Customer_DOB", mThisCustomer.Customer_DOB);
+            DB.AddParameter("@Customer_Address", mThisCustomer.Customer_Address);
+            DB.AddParameter("@Customer_Phone_Nmbr", mThisCustomer.Customer_Phone_Nmbr);
+            DB.AddParameter("@Save_Payment_Info", mThisCustomer.Save_Payment_Info);
+
+            //execute the query returning the primary key value
+            return DB.Execute("sproc_tblCustomers_Insert");
+        }
     }
 }

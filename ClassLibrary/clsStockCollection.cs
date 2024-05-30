@@ -10,7 +10,7 @@ namespace ClassLibrary
 
         //private variables
         List<clsStock> mStockList = new List<clsStock>();
-        private Int32 mCount;
+        //private Int32 mCount;
         clsStock mThisStock = new clsStock();
 
         public List<clsStock> StockList

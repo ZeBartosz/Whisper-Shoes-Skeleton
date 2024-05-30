@@ -123,16 +123,15 @@ namespace ClassLibrary
 
         public string Valid(string customerId, string itemId, string orderDate, string totalAmount, string shippingAddress)
         {
-            // Variable which stores Error
+
             string Error = "";
             DateTime DateTemp;
-             // Customer Id validation
-            // Checking if the CustomerId variable is blank
+
             if (customerId.Length == 0)
             {
                 Error = Error + "The Customer Id may not be blank : ";
             }
-            // if the  is more than 50
+
             if (customerId.Length > 50)
             {
                 Error = Error + "The Customer Id has to contain less than 50 characters : ";
@@ -154,26 +153,21 @@ namespace ClassLibrary
                 Error = Error + "The Shipping Address must be less than 60 characters";
             }
 
-            DateTime DateComp = DateTime.Now.Date;
-            //create an instance of DateTime to compare with DateTemp
-            //in the if statements
+            
             try
             {
-                DateTemp = Convert.ToDateTime(OrderDate);
-                //check to see if the date is less than today's date
-                if (DateTemp < DateComp)
+                DateTemp = Convert.ToDateTime(orderDate);
+                if (DateTemp < DateTime.Now.Date)
                 {
                     Error = Error + "The date cannot be in the past : ";
                 }
-                //check to see if date is greater than today's date
-                if (DateTemp > DateComp)
+                if (DateTemp > DateTime.Now.Date)
                 {
                     Error = Error + "The date cannot be on the future : ";
                 }
             }
             catch
             {
-                //record the error
                 Error = Error + "The date was not a valid date : ";
             }
 

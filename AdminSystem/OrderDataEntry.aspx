@@ -28,12 +28,14 @@
     </p>
     <asp:Label ID="lblShippingAddress" runat="server" Text="Shipping Address"></asp:Label>
     <asp:TextBox ID="txtShippingAddress" runat="server"></asp:TextBox>
+        <br />
+&nbsp;&nbsp;&nbsp;&nbsp;
     <p>
-        <asp:Label ID="lblOrderCompleted" runat="server" Text="Order Completed"></asp:Label>
-        <asp:TextBox ID="txtOrderCompleted" runat="server"></asp:TextBox>
+        <asp:CheckBox ID="chkOrderCompleted" runat="server" Text="Order Completed"  />
     </p>
-    <p>
-        <asp:CheckBox ID="chkActive" runat="server" Text="Active" />
+        <p>
+            &nbsp;</p>
+        <p>
         <asp:Button ID="btnOK" runat="server" OnClick="btnOK_Click" Text="OK" />
         <asp:Button ID="btnCancel" runat="server" Text="Cancel" />
     </p>

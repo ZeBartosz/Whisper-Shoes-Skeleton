@@ -5,9 +5,6 @@ namespace ClassLibrary
 {
         public class clsReview
         {
-
-
-
             //private data member for the review id property
             private Int32 mReviewId;
 
@@ -171,7 +168,7 @@ namespace ClassLibrary
                     return false;
                 }
             }
-        public string Valid(string CustomerName, string ReviewDescription, string ReviewTable, string DateSubmitted)
+        public string Valid(string CustomerName, string ReviewDescription, string ReviewTitle, string Rating, string DateSubmitted)
         {
             // Variable which stores Error
             String Error = "";

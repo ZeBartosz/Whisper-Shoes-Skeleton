@@ -11,10 +11,35 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 ReviewId;
+
     protected void Page_Load(object sender, EventArgs e)
     {
+        ReviewId = Convert.ToInt32(Session["ReviewId"]);
+
+        if (IsPostBack == false)
+        {
+            if (ReviewId != -1)
+            {
+                DisplayReview();
+            }
+        }
     }
-    protected void btnOK_Click1(object sender, EventArgs e)
+
+    void DisplayReview()
+    {
+        clsReviewCollection Review = new clsReviewCollection();
+        Review.ThisReview.Find(ReviewId);
+        txtReviewId.Text = Review.ThisReview.ReviewId.ToString();
+        txtCustomerName.Text = Review.ThisReview.CustomerName.ToString();
+        txtReviewDescription.Text = Review.ThisReview.ReviewDescription.ToString();
+        txtReviewTitle.Text = Review.ThisReview.ReviewTitle.ToString();
+        txtRating.Text = Review.ThisReview.Rating.ToString();
+        txtDateSubmitted.Text = Review.ThisReview.DateSubmitted.ToString();
+        chkIsApproved.Checked = Review.ThisReview.IsApproved;
+    }
+
+    protected void btnOK_Click(object sender, EventArgs e)
     {
         //create a new instance of clsReview
         clsReview AnReview = new clsReview();
@@ -27,19 +52,32 @@ public partial class _1_DataEntry : System.Web.UI.Page
         String IsApproved = chkIsApproved.Text;
 
         String Error = "";
-        Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, IsApproved);
+        Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
 
         if (Error == "")
         {
             //captures
+            AnReview.ReviewId = ReviewId;
             AnReview.CustomerName = CustomerName;
             AnReview.ReviewDescription = ReviewDescription;
             AnReview.ReviewTitle = ReviewTitle;
-            AnReview.Rating = Rating
+            AnReview.Rating = Convert.ToInt32(Rating);
             AnReview.DateSubmitted = Convert.ToDateTime(DateSubmitted);
-            Session["AnReview"] = AnReview;
-            //navigate to the viewer
-            Response.Redirect("ReviewBookViewer.aspx");
+            AnReview.IsApproved = chkIsApproved.Checked;
+            
+            clsReviewCollection ReviewList = new clsReviewCollection();
+            if (ReviewId == -1)
+            {
+                ReviewList.ThisReview = AnReview;
+                ReviewList.Add();
+            }
+            else
+            {
+                ReviewList.ThisReview.Find(ReviewId);
+                ReviewList.ThisReview = AnReview;
+                ReviewList.Update();
+            }
+            Response.Redirect("ReviewsList.aspx");
         }
         else
         {
@@ -48,12 +86,12 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
     }
 
-    protected void Button1_Click(object sender, EventArgs e)
+    protected void btnFind_Click(object sender, EventArgs e)
     {
         clsReview AnReview = new clsReview();
         Int32 ReviewId;
         Boolean Found = false;
-        ReviewId = Convert.ToInt32(txtReviewID.Text);
+        ReviewId = Convert.ToInt32(txtReviewId.Text);
         Found = AnReview.Find(ReviewId);
         if (Found == true)
         {
@@ -64,5 +102,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
             txtReviewTitle.Text = AnReview.ReviewTitle;
             chkIsApproved.Checked = AnReview.IsApproved;
         }
+    }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+
     }
 }

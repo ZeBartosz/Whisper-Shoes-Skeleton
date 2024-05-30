@@ -8,8 +8,7 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
+         <asp:Button ID="btnReturn" runat="server" style="z-index: 1; left: 281px; top: 424px; position: absolute" Text="Return to Main Menu" OnClick="btnReturn_Click" />
         <asp:ListBox ID="lstStockList" runat="server" style="z-index: 1; left: 17px; top: 35px; position: absolute; height: 300px; width: 320px"></asp:ListBox>
         <asp:Button ID="btnAddNew" runat="server" OnClick="btnAddNew_Click" style="z-index: 1; left: 71px; top: 345px; position: absolute;" Text="ADD" />
         <asp:Button ID="btnEdit" runat="server" OnClick="btnEdit_Click" style="z-index: 1; left: 133px; top: 345px; position: absolute" Text="EDIT" />

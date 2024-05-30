@@ -34,9 +34,9 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.Customer_Phone_Nmbr = Customer_Phone_Nmbr;
             ACustomer.Customer_Address = Customer_Address;
             ACustomer.Save_Payment_Info = ChkSavePaymentInfo.Checked;
-            //clsCustomerCollection CustomerList = new clsCustomerCollection();
-            //CustomerList.ThisCustomer = ACustomer;
-            //CustomerList.Add();
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+            CustomerList.ThisCustomer = ACustomer;
+            CustomerList.Add();
 
             Response.Redirect("CustomerList.aspx");
         }

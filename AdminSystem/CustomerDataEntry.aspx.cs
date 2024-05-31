@@ -19,6 +19,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsCustomers
         clsCustomers ACustomer = new clsCustomers();
+        int Customer_id = Convert.ToInt32(txtCustomer_id.Text);
         string Customer_First_Name = txtCustomerFirstName.Text;
         string Customer_Last_Name = txtCustomerLastName.Text;
         string Customer_DOB = txtCustomerDOB.Text;
@@ -29,7 +30,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
         if (Error == "")
         {
-            ACustomer.Customer_id = Customer_id;
+            ACustomer.Customer_id =  Customer_id;
             ACustomer.Customer_First_Name = Customer_First_Name;
             ACustomer.Customer_Last_Name = Customer_Last_Name;
             ACustomer.Customer_DOB = Convert.ToDateTime(Customer_DOB);
@@ -91,6 +92,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     void DisplayCustomer()
     {
         clsCustomerCollection Customer = new clsCustomerCollection();
+        int Customer_id = Convert.ToInt32(txtCustomer_id.Text);
         Customer.ThisCustomer.Find(Customer_id);
         txtCustomer_id.Text = Customer.ThisCustomer.Customer_id.ToString();
         txtCustomerFirstName.Text = Customer.ThisCustomer.Customer_First_Name.ToString();

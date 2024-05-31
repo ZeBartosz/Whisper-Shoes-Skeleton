@@ -1,5 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.IO;
+using System.Runtime.InteropServices.ComTypes;
 
 namespace ClassLibrary
 {
@@ -19,7 +21,7 @@ namespace ClassLibrary
             //object for the data connect
             clsDataConnection DB = new clsDataConnection();
             //execute stored procedure
-            DB.Execute("sporc_tbStaff_SelectAll");
+            DB.Execute("sproc_tblStaff_SelectALL");
             //get the count of records
             RecordCount = DB.Count;
             //while there are records to process
@@ -28,6 +30,7 @@ namespace ClassLibrary
                 //create a blank staff
                 clsStaff Staff = new clsStaff();
                 //read in the fields for the current record
+                Staff.StaffId = Convert.ToInt32(DB.DataTable.Rows[Index]["StaffId"]);
                 Staff.StaffName = Convert.ToString(DB.DataTable.Rows[Index]["StaffName"]);
                 Staff.StaffEmail = Convert.ToString(DB.DataTable.Rows[Index]["StaffEmail"]);
                 Staff.StaffPassword = Convert.ToString(DB.DataTable.Rows[Index]["StaffPassword"]);
@@ -92,6 +95,23 @@ namespace ClassLibrary
             DB.AddParameter("@StaffManager", mThisStaff.StaffManager);
             //execute the query
             return DB.Execute("sproc_tblStaff_Insert");
+        }
+
+        public void Update()
+        {
+            clsDataConnection DB = new clsDataConnection();
+
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            DB.AddParameter("@StaffName", mThisStaff.StaffName);
+            DB.AddParameter("@StaffEmail", mThisStaff.StaffEmail);
+            DB.AddParameter("@StaffPassword", mThisStaff.StaffPassword);
+            DB.AddParameter("@StaffStartDate", mThisStaff.StaffStartDate);
+            DB.AddParameter("@StaffSalary", mThisStaff.StaffSalary);
+            DB.AddParameter("@StaffManager", mThisStaff.StaffManager);
+
+            DB.Execute("sproc_tblStaff_Update");
+            
+
         }
     }
 }

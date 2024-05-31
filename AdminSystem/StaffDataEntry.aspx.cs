@@ -7,9 +7,36 @@ using System.Web.UI.WebControls;
 using ClassLibrary;
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    //variable to store the primary key with the page level scope
+    Int32 StaffId;
     protected void Page_Load(object sender, EventArgs e)
     {
+        //get the number of staff to be processed
+        StaffId = Convert.ToInt32(Session["StaffId"]);
+        if (IsPostBack == false)
+        {
+            //if this is not a new record
+            if (StaffId != -1)
+            {
+                //display the current date 
+                DisplayStaff();
+            }
+        }
     }
+
+    private void DisplayStaff()
+    {
+        clsStaffCollection AllStaff = new clsStaffCollection();
+        AllStaff.ThisStaff.Find(StaffId);
+        txtStaffId.Text = AllStaff.ThisStaff.StaffId.ToString();
+        txtStaffName.Text = AllStaff.ThisStaff.StaffName.ToString();
+        txtStaffEmail.Text = AllStaff.ThisStaff.StaffEmail.ToString();
+        txtStaffPassword.Text = AllStaff.ThisStaff.StaffPassword.ToString();
+        txtStaffStartDate.Text = AllStaff.ThisStaff.StaffStartDate.ToString();
+        txtStaffSalary.Text = AllStaff.ThisStaff.StaffSalary.ToString();
+        chkStaffManager.Checked = AllStaff.ThisStaff.StaffManager;
+    }
+
     protected void btnOK_Click(object sender, EventArgs e)
     {
         //create an instance
@@ -28,6 +55,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Error == "")
         {
             //capture data
+            Staff.StaffId = StaffId;
             Staff.StaffName = StaffName;
             Staff.StaffEmail = StaffEmail;
             Staff.StaffPassword = StaffPassword;
@@ -36,12 +64,23 @@ public partial class _1_DataEntry : System.Web.UI.Page
             Staff.StaffManager = chkStaffManager.Checked;
             //create new instance
             clsStaffCollection StaffList = new clsStaffCollection();
-            //set the ThisStaff property
-            StaffList.ThisStaff = Staff;
-            //add the record
-            StaffList.Add();
-            //navigate to the view page
+
+            //if this is a new record then add the data
+            if (StaffId == -1)
+            {
+                StaffList.ThisStaff = Staff;
+                StaffList.Add();
+            }
+            //otherwise it must be an update
+            else
+            {
+                StaffList.ThisStaff.Find(StaffId);
+                StaffList.ThisStaff = Staff;
+                StaffList.Update();
+            }
+            //redirect
             Response.Redirect("StaffList.aspx");
+            
         }
         else
         {

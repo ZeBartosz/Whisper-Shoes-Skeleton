@@ -27,6 +27,8 @@ public partial class StockLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
         // find the record
         Found = anUser.FindUser(UserName, Password);
+        // add a session to capture the user name
+        Session["anUser"] = anUser;
         // if username and/or password is empty
         if (txtUserName.Text == "")
         {
@@ -49,4 +51,5 @@ public partial class StockLogin : System.Web.UI.Page
         }
 
     }
+
 }

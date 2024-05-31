@@ -1,12 +1,20 @@
 ﻿using ClassLibrary;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
 using System;
+using System.Security.Cryptography.X509Certificates;
 
 namespace Testing5
 {
     [TestClass]
     public class tstReview
     {
+        //creating test data
+        string CustomerName = "Peter";
+        string ReviewDescription = "ReviewDescription";
+        string ReviewTitle = "ReviewTitle";
+        string Rating = "5";
+        string DateSubmitted = DateTime.Now.ToShortDateString();
+
         [TestMethod]
         public void InstanceOK()
         {
@@ -17,7 +25,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void IsApproved()
+        public void IsApprovedOK()
         {
             //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
@@ -30,7 +38,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void DateSubmitted()
+        public void DateSubmittedOK()
         {
             //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
@@ -43,7 +51,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void CustomerName()
+        public void CustomerNameOK()
         {
             //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
@@ -56,7 +64,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void ReviewDescription()
+        public void ReviewDescriptionOK()
         {
             //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
@@ -69,7 +77,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void ReviewTitle()
+        public void ReviewTitleOK()
         {
             //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
@@ -82,7 +90,7 @@ namespace Testing5
         }
 
         [TestMethod]
-        public void Rating()
+        public void RatingOK()
         {
             //create an instance of the class we want to create
             clsReview AnReview = new clsReview();
@@ -101,7 +109,7 @@ namespace Testing5
             //create a Boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 ReviewId = 21;
+            Int32 ReviewId = 1;
             //invoke the method
             Found = AnReview.Find(ReviewId);
             //test to see if the result is true
@@ -142,7 +150,7 @@ namespace Testing5
             //invoke the method
             Found = AnReview.Find(ReviewId);
             //check the customer name
-            if (AnReview.CustomerName != "Test CustomerName")
+            if (AnReview.CustomerName != "CustomerName")
             {
                 OK = false;
             }
@@ -168,7 +176,7 @@ namespace Testing5
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(!OK);
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestDateSubmittedFound()
@@ -184,12 +192,12 @@ namespace Testing5
             //invoke the method
             Found = AnReview.Find(ReviewId);
             //check the date submitted
-            if (AnReview.DateSubmitted != Convert.ToDateTime("01/01/2024"))
+            if (AnReview.DateSubmitted != Convert.ToDateTime("30/05/2024"))
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(!OK);
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestReviewDescriptionFound()
@@ -205,12 +213,12 @@ namespace Testing5
             //invoke the method
             Found = AnReview.Find(ReviewId);
             //check the review description
-            if (AnReview.ReviewDescription != "Test ReviewDescription")
+            if (AnReview.ReviewDescription != "ReviewDescription")
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(!OK);
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestReviewTitleFound()
@@ -226,12 +234,12 @@ namespace Testing5
             //invoke the method
             Found = AnReview.Find(ReviewId);
             //check the review title
-            if (AnReview.ReviewTitle != "Test ReviewTitle")
+            if (AnReview.ReviewTitle != "ReviewTitle")
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(!OK);
+            Assert.IsTrue(OK);
         }
         [TestMethod]
         public void TestIsApprovedFound()
@@ -247,12 +255,310 @@ namespace Testing5
             //invoke the method
             Found = AnReview.Find(ReviewId);
             //check the is approved
-            if (AnReview.IsApproved != true)
+            if (AnReview.IsApproved != false)
             {
                 OK = false;
             }
             //test to see that the result is correct
-            Assert.IsTrue(!OK);
+            Assert.IsTrue(OK);
+        }
+
+        /*************** Validation ***************/
+        [TestMethod]
+        public void ValidMethodOK()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        [TestMethod]
+        public void CustomerNameMinLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void CustomerNameMin()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "a";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void CustomerNameMinPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "aa";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void CustomerNameMaxLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(49, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void CustomerNameMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(50, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void CustomerNameMaxPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(51, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void CustomerNameMid()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(25, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void CustomerNameExtremeMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string CustomerName = "";
+            CustomerName = CustomerName.PadRight(500, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        // Validating ReviewDescription
+        [TestMethod]
+        public void ReviewDescriptionMinLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void ReviewDescriptionMin()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "a";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewDescriptionMinPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "aa";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewDescriptionMaxLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "";
+            ReviewDescription = ReviewDescription.PadRight(49, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewDescriptionMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "";
+            ReviewDescription = ReviewDescription.PadRight(50, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewDescriptionMaxPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "";
+            ReviewDescription = ReviewDescription.PadRight(51, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewDescriptionMid()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "";
+            ReviewDescription = ReviewDescription.PadRight(25, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewDescriptionExtremeMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewDescription = "";
+            ReviewDescription = ReviewDescription.PadRight(500, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        // Validating ReviewTitle
+        [TestMethod]
+        public void ReviewTitleMinLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
+        }
+        public void ReviewTitleMin()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "a";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewTitleMinPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "aa";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewTitleMaxLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "";
+            ReviewTitle = ReviewTitle.PadRight(49, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewTitleMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "";
+            ReviewTitle = ReviewTitle.PadRight(50, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewTitleMaxPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "";
+            ReviewTitle = ReviewTitle.PadRight(51, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewTitleMid()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "";
+            ReviewTitle = ReviewTitle.PadRight(25, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        public void ReviewTitleExtremeMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            string ReviewTitle = "";
+            ReviewTitle = ReviewTitle.PadRight(500, 'a');
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+        // Date Submitted
+        [TestMethod]
+        public void DateSubmittedExtremeMin()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now;
+            TestDate = TestDate.AddDays(-100);
+            String DateSubmitted = TestDate.ToString();
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateSubmittedMinLessOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now;
+            TestDate = TestDate.AddDays(-1);
+            String DateSubmitted = TestDate.ToString();
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateSubmittedMin()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now.Date;
+            String DateSubmitted = TestDate.ToString();
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateSubmittedMinPlusOne()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now;
+            TestDate = TestDate.AddDays(1);
+            String DateSubmitted = TestDate.ToString();
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateSubmittedExtremeMax()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            DateTime TestDate;
+            TestDate = DateTime.Now;
+            TestDate = TestDate.AddDays(1);
+            String DateSubmitted = TestDate.ToString();
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
+        }
+
+        [TestMethod]
+        public void DateSubmittedInvalidData()
+        {
+            clsReview AnReview = new clsReview();
+            String Error = "";
+            String DateSubmitted = "This is not a date";
+            Error = AnReview.Valid(CustomerName, ReviewDescription, ReviewTitle, Rating, DateSubmitted);
+            Assert.AreNotEqual(Error, "");
         }
     }
 }
+
+        

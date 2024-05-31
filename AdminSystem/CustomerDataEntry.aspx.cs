@@ -45,6 +45,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
             ACustomer.Customer_Phone_Nmbr = Customer_Phone_Nmbr;
             ACustomer.Save_Payment_Info = ChkSavePaymentInfo.Checked;
 
+
             clsCustomerCollection CustomerList = new clsCustomerCollection();
 
             if (Customer_id == -1)

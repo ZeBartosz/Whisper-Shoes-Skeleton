@@ -1,4 +1,7 @@
 ﻿using System;
+using System.IO;
+using System.Runtime.InteropServices.ComTypes;
+
 namespace ClassLibrary
 {
 

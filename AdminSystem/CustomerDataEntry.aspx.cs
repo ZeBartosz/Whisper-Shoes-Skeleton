@@ -9,9 +9,17 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 Customer_id;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Customer_id = Convert.ToInt32(Session["Customer_id"]);
+        if (IsPostBack == false)
+        {
+            if (Customer_id != -1)
+            {
+                DisplayCustomer();
+            }
+        }
     }
 
 
@@ -19,7 +27,6 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         //Create a new instance of clsCustomers
         clsCustomers ACustomer = new clsCustomers();
-        int Customer_id = Convert.ToInt32(txtCustomer_id.Text);
         string Customer_First_Name = txtCustomerFirstName.Text;
         string Customer_Last_Name = txtCustomerLastName.Text;
         string Customer_DOB = txtCustomerDOB.Text;
@@ -92,7 +99,7 @@ public partial class _1_DataEntry : System.Web.UI.Page
     void DisplayCustomer()
     {
         clsCustomerCollection Customer = new clsCustomerCollection();
-        int Customer_id = Convert.ToInt32(txtCustomer_id.Text);
+      
         Customer.ThisCustomer.Find(Customer_id);
         txtCustomer_id.Text = Customer.ThisCustomer.Customer_id.ToString();
         txtCustomerFirstName.Text = Customer.ThisCustomer.Customer_First_Name.ToString();

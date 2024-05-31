@@ -84,6 +84,7 @@ namespace ClassLibrary
             //Connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
+            
             DB.AddParameter("@Customer_First_Name", mThisCustomer.Customer_First_Name);
             DB.AddParameter("@Customer_Last_Name", mThisCustomer.Customer_Last_Name);
             DB.AddParameter("@Customer_DOB", mThisCustomer.Customer_DOB);
@@ -101,6 +102,7 @@ namespace ClassLibrary
             //Connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
+            DB.AddParameter("@Customer_id", mThisCustomer.Customer_id);
             DB.AddParameter("@Customer_First_Name", mThisCustomer.Customer_First_Name);
             DB.AddParameter("@Customer_Last_Name", mThisCustomer.Customer_Last_Name);
             DB.AddParameter("@Customer_DOB", mThisCustomer.Customer_DOB);

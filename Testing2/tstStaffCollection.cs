@@ -100,7 +100,34 @@ namespace Testing2
             //find the record
             AllStaff.ThisStaff.Find(PrimaryKey);
             //test to see if values are the same
-            Assert.AreEqual(AllStaff.ThisStaff, TestItem);  
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
+        }
+
+        [TestMethod]
+        public void UpdateMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaff TestItem = new clsStaff();
+            Int32 PrimaryKey = 0;
+            TestItem.StaffName = "Test Name";
+            TestItem.StaffEmail = "Test@email.com";
+            TestItem.StaffPassword = "TestPassword";
+            TestItem.StaffStartDate = DateTime.Now;
+            TestItem.StaffSalary = 1;
+            TestItem.StaffManager = true;
+            AllStaff.ThisStaff = TestItem;
+            PrimaryKey = AllStaff.Add();
+            TestItem.StaffId = PrimaryKey;
+            TestItem.StaffName = "Test Name";
+            TestItem.StaffEmail = "Test@email.com";
+            TestItem.StaffPassword = "TestPassword";
+            TestItem.StaffStartDate = DateTime.Now;
+            TestItem.StaffSalary = 1;
+            TestItem.StaffManager = true;
+            AllStaff.ThisStaff = TestItem;
+            AllStaff.Update();
+            AllStaff.ThisStaff.Find(PrimaryKey);
+            Assert.AreEqual(AllStaff.ThisStaff, TestItem);
         }
 
 

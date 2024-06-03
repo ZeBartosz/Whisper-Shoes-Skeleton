@@ -163,5 +163,56 @@ namespace Testing3
             Assert.IsFalse(Found);
 
         }
+
+        [TestMethod]
+
+        public void ReportByCustomerLastNameMethodOk()
+        {
+            clsCustomerCollection AllCustomers = new clsCustomerCollection();
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByCustomerLastName("");
+            Assert.AreEqual(AllCustomers.Count, FilteredCustomers.Count);
+        }
+
+        [TestMethod]
+
+        public void ReportByCustomerLastNameNoneFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            FilteredCustomers.ReportByCustomerLastName("xxx xxx");
+            Assert.AreEqual(0, FilteredCustomers.Count);
+        }
+
+        /*
+         *        
+        [TestMethod]
+
+        public void ReportByCustomerLastNameTestDataFound()
+        {
+            clsCustomerCollection FilteredCustomers = new clsCustomerCollection();
+            Boolean OK = true;
+            FilteredCustomers.ReportByCustomerLastName("Test");
+            if (FilteredCustomers.Count == 2)
+            {
+                if (FilteredCustomers.CustomerList[0].Customer_id != 2038)
+                {
+                    OK = false;
+                }
+                if (FilteredCustomers.CustomerList[0].Customer_id != 2039)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+
+            Assert.IsTrue(OK);
+        } 
+         *
+         */
+
+
     }
 }

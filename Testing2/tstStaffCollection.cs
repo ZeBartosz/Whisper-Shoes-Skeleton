@@ -151,8 +151,49 @@ namespace Testing2
             Boolean Found = AllStaff.ThisStaff.Find(PrimaryKey);
             Assert.IsFalse(Found);
 
+        }
 
-                
+        [TestMethod]
+        public void ReportByStaffNameMethodOK()
+        {
+            clsStaffCollection AllStaff = new clsStaffCollection();
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            FilteredStaff.ReportByStaffName("");
+            Assert.AreEqual(AllStaff.Count, FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStaffNameNoneFound()
+        {
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            FilteredStaff.ReportByStaffName("xxxxxxxxx");
+            Assert.AreEqual(0, FilteredStaff.Count);
+        }
+
+        [TestMethod]
+        public void ReportByStaffNameDataFound()
+        {
+            //create an instance of the filterd data
+            clsStaffCollection FilteredStaff = new clsStaffCollection();
+            //variable to store the outcome
+            Boolean OK = true;
+            //apply a staff name that doesnt exist
+            FilteredStaff.ReportByStaffName("Test Name");
+            //check that the correct number of records are found
+            if (FilteredStaff.Count == 1)
+            {
+                //check to see that the first record is 9
+                if (FilteredStaff.StaffList[0].StaffId != 9)
+                {
+                    OK = false;
+                }
+            }
+            else
+            {
+                OK = false;
+            }
+            //test to see that there are no records
+            Assert.IsTrue(OK);
         }
 
 

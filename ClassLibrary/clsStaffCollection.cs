@@ -97,6 +97,14 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblStaff_Insert");
         }
 
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@StaffId", mThisStaff.StaffId);
+            DB.Execute("sproc_tblStaff_Delete");
+
+        }
+
         public void Update()
         {
             clsDataConnection DB = new clsDataConnection();

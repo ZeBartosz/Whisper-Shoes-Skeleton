@@ -55,4 +55,21 @@ public partial class _1_List : System.Web.UI.Page
             lblError.Text = "Please select a record from the list to edit";
         }
     }
+
+    protected void btnDelete_Click(object sender, EventArgs e)
+    {
+        Int32 Customer_id;
+
+        if (lstCustomerList.SelectedIndex != -1)
+        {
+            Customer_id = Convert.ToInt32(lstCustomerList.SelectedValue);
+            Session["Customer_id"] = Customer_id;
+            Response.Redirect("CustomerConfirmDelete.aspx");
+        }
+
+        else
+        {
+            lblError.Text = "Please select a record from the list to delete";
+        }
+    }
 }

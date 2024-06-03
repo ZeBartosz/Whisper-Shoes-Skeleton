@@ -96,6 +96,13 @@ namespace ClassLibrary
             return DB.Execute("sproc_tblCustomers_Insert");
         }
 
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customer_id", mThisCustomer.Customer_id);
+            DB.Execute("sproc_tblCustomers_Delete");
+        }
+
         public void Update()
         {
             //Adds a record to the database based on the values of mThisCustomer

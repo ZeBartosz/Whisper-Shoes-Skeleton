@@ -26,6 +26,7 @@ public partial class OrderLogin : System.Web.UI.Page
         Password = Convert.ToString(txtPassword.Text);
 
         Found = AnUser.FindUser(UserName, Password);
+        Session["AnUser"] = AnUser;
         if (txtUserName.Text == "")
         {
             lblError.Text = "Enter User Name Please";
@@ -57,6 +58,6 @@ public partial class OrderLogin : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

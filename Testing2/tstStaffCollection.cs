@@ -180,10 +180,14 @@ namespace Testing2
             //apply a staff name that doesnt exist
             FilteredStaff.ReportByStaffName("Test Name");
             //check that the correct number of records are found
-            if (FilteredStaff.Count == 1)
+            if (FilteredStaff.Count == 2)
             {
                 //check to see that the first record is 9
                 if (FilteredStaff.StaffList[0].StaffId != 9)
+                {
+                    OK = false;
+                }
+                if (FilteredStaff.StaffList[1].StaffId != 1023)
                 {
                     OK = false;
                 }

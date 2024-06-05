@@ -22,7 +22,7 @@ public partial class _1_ConfirmDelete : System.Web.UI.Page
         Response.Redirect("ReviewsList.aspx");
     }
 
-    protected void btnNo_Click(Object sender, EventArgs e)
+    protected void btnNo_Click(object sender, EventArgs e)
     {
         Response.Redirect("ReviewsList.aspx");
     }

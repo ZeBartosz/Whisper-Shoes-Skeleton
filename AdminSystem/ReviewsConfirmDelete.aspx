@@ -11,7 +11,7 @@
         <asp:Label ID="lblDelete" runat="server" style="z-index: 1; left: 10px; top: 45px; position: absolute">Are you sure you want to delete this record?</asp:Label>
 
         <asp:Button ID="btnYes" runat="server" style="z-index: 1; left: 80px; top: 90px; position: absolute" Text="Yes" OnClick="btnYes_Click"/>
-        <asp:Button ID="btnNo" runat="server" style="z-index: 1; left: 160px; top: 90px; position: absolute" Text="No"/>
+        <asp:Button ID="btnNo" runat="server" style="z-index: 1; left: 160px; top: 90px; position: absolute" Text="No" OnClick="btnNo_Click"/>
     </form>
 </body>
 </html>

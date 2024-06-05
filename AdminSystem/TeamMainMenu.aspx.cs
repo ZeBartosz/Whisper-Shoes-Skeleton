@@ -16,4 +16,9 @@ public partial class TeamMainMenu : System.Web.UI.Page
     {
         Response.Redirect("StockLogin.aspx");
     }
+
+    protected void btnReviews_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ReviewLogin.aspx");
+    }
 }

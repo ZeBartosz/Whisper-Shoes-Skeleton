@@ -96,16 +96,21 @@ public partial class _1_DataEntry : System.Web.UI.Page
         if (Found == true)
         {
             txtCustomerName.Text = AnReview.CustomerName;
-            txtRating.Text = AnReview.Rating.ToString();
-            txtDateSubmitted.Text = AnReview.DateSubmitted.ToString();
             txtReviewDescription.Text = AnReview.ReviewDescription;
             txtReviewTitle.Text = AnReview.ReviewTitle;
+            txtRating.Text = AnReview.Rating.ToString();
+            txtDateSubmitted.Text = AnReview.DateSubmitted.ToString();
             chkIsApproved.Checked = AnReview.IsApproved;
         }
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
+        Response.Redirect("ReviewsList.aspx");
+    }
 
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

@@ -1,5 +1,4 @@
-﻿using ClassLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 
 namespace ClassLibrary
@@ -105,12 +104,12 @@ namespace ClassLibrary
             while (Index < RecordCount)
             {
                 clsReview AnReview = new clsReview();
-
+                AnReview.ReviewId = Convert.ToInt32(DB.DataTable.Rows[Index]["ReviewId"]);
                 AnReview.CustomerName = Convert.ToString(DB.DataTable.Rows[Index]["CustomerName"]);
-                AnReview.Rating = Convert.ToInt32(DB.DataTable.Rows[Index]["Rating"]);
-                AnReview.DateSubmitted = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateSubmitted"]);
                 AnReview.ReviewDescription = Convert.ToString(DB.DataTable.Rows[Index]["ReviewDescription"]);
                 AnReview.ReviewTitle = Convert.ToString(DB.DataTable.Rows[Index]["ReviewTitle"]);
+                AnReview.Rating = Convert.ToInt32(DB.DataTable.Rows[Index]["Rating"]);
+                AnReview.DateSubmitted = Convert.ToDateTime(DB.DataTable.Rows[Index]["DateSubmitted"]);
                 AnReview.IsApproved = Convert.ToBoolean(DB.DataTable.Rows[Index]["IsApproved"]);
 
                 mReviewList.Add(AnReview);

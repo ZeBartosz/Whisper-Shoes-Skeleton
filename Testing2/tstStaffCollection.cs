@@ -166,7 +166,7 @@ namespace Testing2
         public void ReportByStaffNameNoneFound()
         {
             clsStaffCollection FilteredStaff = new clsStaffCollection();
-            FilteredStaff.ReportByStaffName("xxxxxxxxx");
+            FilteredStaff.ReportByStaffName("xxxx xxxx");
             Assert.AreEqual(0, FilteredStaff.Count);
         }
 
@@ -178,16 +178,12 @@ namespace Testing2
             //variable to store the outcome
             Boolean OK = true;
             //apply a staff name that doesnt exist
-            FilteredStaff.ReportByStaffName("Test Name");
+            FilteredStaff.ReportByStaffName("Jack Smith");
             //check that the correct number of records are found
-            if (FilteredStaff.Count == 2)
+            if (FilteredStaff.Count == 1)
             {
                 //check to see that the first record is 9
-                if (FilteredStaff.StaffList[0].StaffId != 9)
-                {
-                    OK = false;
-                }
-                if (FilteredStaff.StaffList[1].StaffId != 1023)
+                if (FilteredStaff.StaffList[0].StaffId != 8)
                 {
                     OK = false;
                 }

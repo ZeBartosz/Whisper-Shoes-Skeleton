@@ -17,6 +17,10 @@ public partial class _1_List : System.Web.UI.Page
             DisplayAllStaff();
         }
 
+        clsStaffUser anUser = new clsStaffUser();
+        anUser = (clsStaffUser)Session["anUser"];
+        Response.Write("Logged in as: " + anUser.UserName);
+
     }
 
     void DisplayAllStaff()
@@ -98,5 +102,10 @@ public partial class _1_List : System.Web.UI.Page
         lstStaffList.DataTextField = "StaffName";
         lstStaffList.DataBind();
 
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

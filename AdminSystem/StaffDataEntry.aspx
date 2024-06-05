@@ -42,7 +42,18 @@
         <p>
             &nbsp;</p>
         <p>
+            &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp; </p>
+        <p>
+&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+        <p>
+&nbsp;&nbsp;&nbsp;&nbsp;
+        </p>
+        <p>
             &nbsp;</p>
+        <p>
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" Text="Return to Main Menu" Width="141px" />
+        </p>
     </form>
 </body>
 </html>

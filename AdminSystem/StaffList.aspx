@@ -19,6 +19,9 @@
         
         <asp:Button runat="server" Text="Apply Filter" ID="btnApply" OnClick="btnApply_Click"></asp:Button>
         <asp:Button runat="server" Text="Clear Filter" ID="btnClear" OnClick="btnClear_Click"></asp:Button>
+        <p>
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" Text="Return To Main Menu" />
+        </p>
     </form>
 </body>
 </html>

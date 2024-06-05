@@ -15,6 +15,9 @@ public partial class _1_List : System.Web.UI.Page
         {
             DisplayReviews();
         }
+        clsReviewUser AnUser = new clsReviewUser();
+        AnUser = (clsReviewUser)Session["AnUser"];
+        Response.Write("Logged in as: " + AnUser.UserName);
     }
 
     void DisplayReviews()
@@ -39,7 +42,6 @@ public partial class _1_List : System.Web.UI.Page
         {
             ReviewId = Convert.ToInt32(lstReviewList.SelectedValue);
             Session["ReviewId"] = ReviewId;
-        
             Response.Redirect("ReviewsDataEntry.aspx");
         }
         else
@@ -82,5 +84,10 @@ public partial class _1_List : System.Web.UI.Page
         lstReviewList.DataValueField = "ReviewId";
         lstReviewList.DataTextField = "CustomerName";
         lstReviewList.DataBind();
+    }
+
+    protected void btnReturn_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

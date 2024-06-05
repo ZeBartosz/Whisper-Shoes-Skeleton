@@ -23,6 +23,7 @@
         <asp:Button ID="btnClearFilter" runat="server" style="z-index: 1; left: 160px; top: 380px; position: absolute" Text="Clear Filter" OnClick="btnClearFilter_Click"/>
 
         <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 10px; top: 420px; position: absolute"></asp:Label>
+        <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="z-index: 1; left: 310px; top: 381px; position: absolute" Text="Return to Main Menu" />
     </form>
 </body>
 </html>

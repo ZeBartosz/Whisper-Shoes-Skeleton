@@ -9,7 +9,7 @@ namespace ClassLibrary
             private Int32 mReviewId;
 
             //reviewId public property
-            public Int32 ReviewId
+            public int ReviewId
             {
                 get
                 {
@@ -24,10 +24,10 @@ namespace ClassLibrary
             }
 
             //private data member for the review id property
-            private String mCustomerName;
+            private string mCustomerName;
 
             //customername public property
-            public String CustomerName
+            public string CustomerName
             {
                 get
                 {
@@ -44,7 +44,7 @@ namespace ClassLibrary
             private Int32 mRating;
 
             //rating public property
-            public Int32 Rating
+            public int Rating
             {
                 get
                 {
@@ -75,10 +75,10 @@ namespace ClassLibrary
                 }
             }
             //private data member for the review id property
-            private String mReviewDescription;
+            private string mReviewDescription;
 
             //reviewdescription public property
-            public String ReviewDescription
+            public string ReviewDescription
             {
                 get
                 {
@@ -92,10 +92,10 @@ namespace ClassLibrary
                 }
             }
             //private data member for the review id property
-            private String mReviewTitle;
+            private string mReviewTitle;
 
             //reviewtitle public property
-            public String ReviewTitle
+            public string ReviewTitle
             {
                 get
                 {
@@ -112,7 +112,7 @@ namespace ClassLibrary
             private Boolean mIsApproved;
 
             //isapproved public property
-            public Boolean IsApproved
+            public bool IsApproved
             {
                 get
                 {
@@ -173,6 +173,7 @@ namespace ClassLibrary
             // Variable which stores Error
             String Error = "";
             DateTime DateTemp;
+            int RatingValue;
 
             // CustomerName validation
             // Checking if the CustomerName variable is blank
@@ -185,6 +186,15 @@ namespace ClassLibrary
             {
                 Error = Error + "The Customer Name has to contain less than 50 characters : ";
             }
+          /*  if (Rating.Length == 0)
+            {
+                Error = Error + "The Rating may not be less than 1 : ";
+            }
+            // if the ReviewDescription is more than 500
+            if (Rating.Length < 6)
+            {
+                Error = Error + "The Rating must be less than 6 ";
+            }*/
 
             // ReviewDescription validation
             // Checking if the ReviewDescription variable is blank
@@ -193,11 +203,10 @@ namespace ClassLibrary
                 Error = Error + "The Review Description may not be blank : ";
             }
             // if the ReviewDescription is more than 500
-            if (ReviewDescription.Length > 500)
+            if (ReviewDescription.Length > 1000)
             {
                 Error = Error + "The Review Description has to contain less than 500 characters : ";
             }
-
             // ReviewTitle validation
             // Checking if the ReviewTitle variable is blank
             if (ReviewTitle.Length == 0)
@@ -232,6 +241,21 @@ namespace ClassLibrary
             catch
             {
                 Error = Error + "The date was invaid date";
+            }
+            if (!int.TryParse(Rating, out RatingValue))
+            {
+                Error += "The Rating must be a number: ";
+            }
+            else
+            {
+                if (RatingValue < 1)
+                {
+                    Error += "The Rating cannot be less than 1: ";
+                }
+                if (RatingValue > 5)
+                {
+                    Error += "The Rating cannot be more than 5: ";
+                }
             }
 
             return Error;

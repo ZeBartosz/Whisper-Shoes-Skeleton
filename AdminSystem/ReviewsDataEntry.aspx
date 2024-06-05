@@ -34,6 +34,8 @@
     <asp:Button ID="btnOK" runat="server" style="z-index: 1; left: 10px; top: 380px; position: absolute" Text="OK" OnClick="btnOK_Click" />
     <asp:Button ID="btnFind" runat="server" style="z-index: 1; left: 340px; top: 80px; position: absolute" Text="Find" OnClick="btnFind_Click" />
         
+        <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" style="z-index: 1; left: 193px; top: 378px; position: absolute" Text="Return to Main Menu" />
+        
     </form>
 </body>
 </html>

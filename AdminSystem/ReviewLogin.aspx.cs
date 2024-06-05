@@ -10,9 +10,7 @@ public partial class ReviewLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
-
     }
-
     protected void btnLogin_Click(object sender, EventArgs e)
     {
         clsReviewUser AnUser = new clsReviewUser();
@@ -22,6 +20,7 @@ public partial class ReviewLogin : System.Web.UI.Page
         UserName = Convert.ToString(txtUserName.Text);
         Password = Convert.ToString(txtPassword.Text);
         Found = AnUser.FindUser(UserName, Password);
+        Session["AnUser"]=AnUser;
         if (txtUserName.Text == "")
         {
             lblError.Text = "Entre a Username ";
@@ -43,6 +42,6 @@ public partial class ReviewLogin : System.Web.UI.Page
 
     protected void btnCancel_Click(object sender, EventArgs e)
     {
-
+        Response.Redirect("TeamMainMenu.aspx");
     }
 }

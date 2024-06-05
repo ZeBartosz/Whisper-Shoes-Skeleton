@@ -17,6 +17,10 @@ public partial class TeamMainMenu : System.Web.UI.Page
         Response.Redirect("StockLogin.aspx");
     }
 
+    protected void btnReviews_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("ReviewLogin.aspx");
+
     protected void btnOrder_Click(object sender, EventArgs e)
     {
         Response.Redirect("OrderLogin.aspx");
@@ -30,5 +34,6 @@ public partial class TeamMainMenu : System.Web.UI.Page
     protected void btnCustomer_Click(object sender, EventArgs e)
     {
         Response.Redirect("CustomerLogin.aspx");
+
     }
 }

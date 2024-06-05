@@ -12,22 +12,22 @@ namespace ClassLibrary
 
         public clsCustomerCollection()
         {
-            //variable for index
-            Int32 Index = 0;
-            //variable to store the record count
-            Int32 RecordCount = 0;
-            //onject for the data connect
             clsDataConnection DB = new clsDataConnection();
-            //execute the stored procedure
-            DB.Execute("sproc_tblCustomers_SelectAll");
-            //get the count of records
+            DB.Execute("sproc_tblCustomers_selectAll");
+            PopulateArray(DB);
+
+        }
+
+        void PopulateArray(clsDataConnection DB)
+        {
+            Int32 Index = 0;
+            Int32 RecordCount;
             RecordCount = DB.Count;
-            //while there are records to process
-            while(Index < RecordCount)
+            mCustomerList = new List<clsCustomers>();
+            while (Index < RecordCount)
             {
-                //create a blank address
                 clsCustomers ACustomer = new clsCustomers();
-                //read in fields for the current record
+                
                 ACustomer.Save_Payment_Info = Convert.ToBoolean(DB.DataTable.Rows[Index]["Save_Payment_Info"]);
                 ACustomer.Customer_id = Convert.ToInt32(DB.DataTable.Rows[Index]["Customer_id"]);
                 ACustomer.Customer_First_Name = Convert.ToString(DB.DataTable.Rows[Index]["Customer_First_Name"]);
@@ -39,9 +39,7 @@ namespace ClassLibrary
                 mCustomerList.Add(ACustomer);
 
                 Index ++;
-
             }
-
         }
 
         public List<clsCustomers> CustomerList
@@ -84,6 +82,7 @@ namespace ClassLibrary
             //Connect to the database
             clsDataConnection DB = new clsDataConnection();
             //set the parameters for the stored procedure
+            
             DB.AddParameter("@Customer_First_Name", mThisCustomer.Customer_First_Name);
             DB.AddParameter("@Customer_Last_Name", mThisCustomer.Customer_Last_Name);
             DB.AddParameter("@Customer_DOB", mThisCustomer.Customer_DOB);
@@ -93,6 +92,39 @@ namespace ClassLibrary
 
             //execute the query returning the primary key value
             return DB.Execute("sproc_tblCustomers_Insert");
+        }
+
+        public void Delete()
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customer_id", mThisCustomer.Customer_id);
+            DB.Execute("sproc_tblCustomers_Delete");
+        }
+
+        public void ReportByCustomerLastName(string Customer_Last_Name)
+        {
+            clsDataConnection DB = new clsDataConnection();
+            DB.AddParameter("@Customer_Last_Name", Customer_Last_Name);
+            DB.Execute("sproc_tblCustomers_FilterByCustomerLastName");
+            PopulateArray(DB);
+        }
+
+        public void Update()
+        {
+            //Adds a record to the database based on the values of mThisCustomer
+            //Connect to the database
+            clsDataConnection DB = new clsDataConnection();
+            //set the parameters for the stored procedure
+            DB.AddParameter("@Customer_id", mThisCustomer.Customer_id);
+            DB.AddParameter("@Customer_First_Name", mThisCustomer.Customer_First_Name);
+            DB.AddParameter("@Customer_Last_Name", mThisCustomer.Customer_Last_Name);
+            DB.AddParameter("@Customer_DOB", mThisCustomer.Customer_DOB);
+            DB.AddParameter("@Customer_Address", mThisCustomer.Customer_Address);
+            DB.AddParameter("@Customer_Phone_Nmbr", mThisCustomer.Customer_Phone_Nmbr);
+            DB.AddParameter("@Save_Payment_Info", mThisCustomer.Save_Payment_Info);
+
+            //execute the query returning the primary key value
+            DB.Execute("sproc_tblCustomers_Update");
         }
     }
 }

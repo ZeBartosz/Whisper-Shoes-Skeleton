@@ -8,11 +8,19 @@
 </head>
 <body>
     <form id="form1" runat="server">
-        <div>
-        </div>
         <asp:ListBox ID="lstStaffList" runat="server" Height="387px" Width="761px"></asp:ListBox>
         <p>
             <asp:Button ID="btnAdd" runat="server" OnClick="btnAdd_Click" Text="Add" />
+            <asp:Button ID="btnEdit" runat="server" Text="Edit" OnClick="btnEdit_Click" />
+            <asp:Button ID="btnDelete" runat="server" Text="Delete" OnClick="btnDelete_Click" /><asp:Label runat="server" Text="lblError" ID="lblError"></asp:Label>
+        </p>
+        <asp:Label runat="server" Text="Enter a Staff Name :" ID="lblEnterFilter"></asp:Label>
+        <asp:TextBox runat="server" ID="txtFilter"></asp:TextBox>
+        
+        <asp:Button runat="server" Text="Apply Filter" ID="btnApply" OnClick="btnApply_Click"></asp:Button>
+        <asp:Button runat="server" Text="Clear Filter" ID="btnClear" OnClick="btnClear_Click"></asp:Button>
+        <p>
+            <asp:Button ID="btnReturn" runat="server" OnClick="btnReturn_Click" Text="Return To Main Menu" />
         </p>
     </form>
 </body>

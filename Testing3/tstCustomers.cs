@@ -665,7 +665,7 @@ namespace Testing3
 
         }
         //customer dob invalid data
-        /*
+        
         [TestMethod]
 
         public void CustomerDOBInvalidData()
@@ -677,7 +677,7 @@ namespace Testing3
             Assert.AreNotEqual(Error, "");
 
         }
-        */
+        
 
 
 

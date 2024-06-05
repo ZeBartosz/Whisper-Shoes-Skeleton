@@ -1,12 +1,12 @@
-﻿using ClassLibrary;
-using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.UI;
 using System.Web.UI.WebControls;
+using ClassLibrary;
 
-public partial class OrderLogin : System.Web.UI.Page
+public partial class StaffLogin : System.Web.UI.Page
 {
     protected void Page_Load(object sender, EventArgs e)
     {
@@ -15,45 +15,39 @@ public partial class OrderLogin : System.Web.UI.Page
 
     protected void btnLogin_Click(object sender, EventArgs e)
     {
-        clsOrderUser AnUser = new clsOrderUser();
-
+        //create an instance of user class
+        clsStaffUser anUser = new clsStaffUser();
+        //create the variables 
         string UserName = txtUserName.Text;
-        string Password = txtPassword.Text;
-
+        string Password = txtPassword.Text; 
+        //create variable to store the result
         Boolean Found = false;
-
+        //get the the entered data
         UserName = Convert.ToString(txtUserName.Text);
         Password = Convert.ToString(txtPassword.Text);
-
-        Found = AnUser.FindUser(UserName, Password);
-        Session["AnUser"] = AnUser;
+        //find the record
+        Found = anUser.FindUser(UserName, Password);
+        //add session
+        Session["anUser"] = anUser;
+        //if empty
         if (txtUserName.Text == "")
         {
-            lblError.Text = "Enter User Name Please";
+            lblError.Text = "Enter a username ";
         }
         else if (txtPassword.Text == "")
         {
-            lblError.Text = "Enter Password Please";
+            lblError.Text = "Enter a password ";
         }
-
+        //if found
         else if (Found == true)
         {
-            Response.Redirect("OrderList.aspx");
+            //redirect
+            Response.Redirect("StaffList.aspx");
         }
         else if (Found == false)
         {
-            lblError.Text = "Details are Wrong.";
+            lblError.Text = "Login details are incorrect. Please try again ";
         }
-
-
-
-
-
-
-
-
-
-
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

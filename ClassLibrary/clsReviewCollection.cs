@@ -52,7 +52,7 @@ namespace ClassLibrary
         }
 
 
-        //MODIFY UPPER PROPERTY.........................
+        //MODIFY UPPER PROPERTY
 
         public int Add()
         {

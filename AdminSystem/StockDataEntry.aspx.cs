@@ -100,18 +100,31 @@ public partial class _1_DataEntry : System.Web.UI.Page
     {
         clsStock aStock = new clsStock();
         Int32 stockId;
-        Boolean Found = false;
-        stockId = Convert.ToInt32(txtStockId.Text);
-        Found = aStock.Find(stockId);
-        if (Found == true)
+        Boolean Found = false;      
+        try
         {
-            txtStockName.Text = aStock.stockName;
-            txtStockDescription.Text = aStock.stockDescription;
-            txtStockQuantity.Text = aStock.stockQuantity.ToString();
-            txtStockRestockThreshold.Text = aStock.stockRestockThreshold.ToString();
-            txtStockLastRestocked.Text = aStock.stockLastRestocked.ToString();
-            chkStockAutoRestock.Checked = aStock.stockAutoRestock;
+            stockId = Convert.ToInt32(txtStockId.Text);
+            Found = aStock.Find(stockId);
+            if (Found == true)
+            {
+                txtStockName.Text = aStock.stockName;
+                txtStockDescription.Text = aStock.stockDescription;
+                txtStockQuantity.Text = aStock.stockQuantity.ToString();
+                txtStockRestockThreshold.Text = aStock.stockRestockThreshold.ToString();
+                txtStockLastRestocked.Text = aStock.stockLastRestocked.ToString();
+                chkStockAutoRestock.Checked = aStock.stockAutoRestock;
+
+                lblError.Text = "";
+            } 
+            else
+            {
+                lblError.Text =  "Stock ID does not exists : ";
+            }
         }
+        catch 
+        {
+            lblError.Text = "Invalid stock id data : ";
+        }   
     }
 
     protected void btnCancel_Click(object sender, EventArgs e)

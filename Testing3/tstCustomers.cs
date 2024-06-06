@@ -119,7 +119,7 @@ namespace Testing3
             //create a boolean variable to store the results of the validation
             Boolean Found = false;
             //create some test data to use with the method
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             //invoke the method
             Found = aCustomer.Find(Customer_id);
             Assert.IsTrue(Found);
@@ -137,11 +137,11 @@ namespace Testing3
             //create a Boolean variable to record if the the data is ok
             Boolean OK = true;
             //create some test date
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             //invoke the method
             Found = ACustomer.Find(Customer_id);
             //check the Customer ID
-            if (ACustomer.Customer_id != 1)
+            if (ACustomer.Customer_id != 2)
             {
                 OK = false;
             }
@@ -156,9 +156,9 @@ namespace Testing3
             clsCustomers ACustomer = new clsCustomers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_First_Name != "Ethan")
+            if (ACustomer.Customer_First_Name != "Aldo")
             {
                 OK = false;
             }
@@ -171,9 +171,9 @@ namespace Testing3
             clsCustomers ACustomer = new clsCustomers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_Last_Name != "Brogan")
+            if (ACustomer.Customer_Last_Name != "Lee")
             {
                 OK = false;
             }
@@ -187,9 +187,9 @@ namespace Testing3
             clsCustomers ACustomer = new clsCustomers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_DOB != Convert.ToDateTime("19/02/2004"))
+            if (ACustomer.Customer_DOB != Convert.ToDateTime("20/03/2004"))
             {
                 OK = false;
             }
@@ -203,9 +203,9 @@ namespace Testing3
             clsCustomers ACustomer = new clsCustomers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_Phone_Nmbr != "07400")
+            if (ACustomer.Customer_Phone_Nmbr != "07374")
             {
                 OK = false;
             }
@@ -220,9 +220,9 @@ namespace Testing3
             clsCustomers ACustomer = new clsCustomers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Customer_Address != "22 street")
+            if (ACustomer.Customer_Address != "44 street")
             {
                 OK = false;
             }
@@ -235,9 +235,9 @@ namespace Testing3
             clsCustomers ACustomer = new clsCustomers();
             Boolean Found = false;
             Boolean OK = true;
-            Int32 Customer_id = 1;
+            Int32 Customer_id = 2;
             Found = ACustomer.Find(Customer_id);
-            if (ACustomer.Save_Payment_Info != true)
+            if (ACustomer.Save_Payment_Info != false)
             {
                 OK = false;
             }

@@ -19,6 +19,9 @@ public partial class _1_List : System.Web.UI.Page
             {
                 DisplayCustomers();
             }
+            clsCustomersUser AUser = new clsCustomersUser();
+            AUser = (clsCustomersUser)Session["AUser"];
+            Response.Write("logged in as : " + AUser.UserName);
         }
     }
     void DisplayCustomers()

@@ -147,19 +147,27 @@ namespace ClassLibrary
                 Error = Error + "The customers first name must be less than 50 characters : ";
             }
 
-            DateTemp = Convert.ToDateTime(customer_DOB);
+            try
+            {
+                DateTemp = Convert.ToDateTime(customer_DOB);
 
-            if (DateTemp < DateTemp.AddYears(-110))
-            {
-                Error = Error + "The customers date of birth cannot be more than 150 years in the past : ";
+                if (DateTemp < DateTemp.AddYears(-110))
+                {
+                    Error = Error + "The customers date of birth cannot be more than 150 years in the past : ";
+                }
+                if (DateTemp < DateTemp.AddYears(-16))
+                {
+                    Error = Error + "The customer must be over 16 : ";
+                }
+                if (DateTemp > DateTime.Now.Date)
+                {
+                    Error = Error + "The customers date of birth cannot be in the future : ";
+                }
             }
-            if (DateTemp < DateTemp.AddYears(-16))
+
+            catch
             {
-                Error = Error + "The customer must be over 16 : ";
-            }
-            if (DateTemp > DateTime.Now.Date)
-            {
-                Error = Error + "The customers date of birth cannot be in the future : ";
+                return Error = Error + "The date is invalid : ";
             }
 
 

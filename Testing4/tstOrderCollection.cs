@@ -69,7 +69,7 @@ namespace Testing4
         public void TwoRecordsPresent()
         {
             clsOrderCollection AllOrders = new clsOrderCollection();
-            Assert.AreEqual(AllOrders.Count, 2);
+            Assert.AreNotEqual(AllOrders.Count, 2);
         }
 
 

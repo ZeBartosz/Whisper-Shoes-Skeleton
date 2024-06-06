@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Activities.Expressions;
 using System.Collections.Generic;
 using System.Linq;
 using System.Web;
@@ -8,9 +9,17 @@ using ClassLibrary;
 
 public partial class _1_DataEntry : System.Web.UI.Page
 {
+    Int32 Customer_id;
     protected void Page_Load(object sender, EventArgs e)
     {
-
+        Customer_id = Convert.ToInt32(Session["Customer_id"]);
+        if (IsPostBack == false)
+        {
+            if (Customer_id != -1)
+            {
+                DisplayCustomer();
+            }
+        }
     }
 
 
@@ -28,22 +37,35 @@ public partial class _1_DataEntry : System.Web.UI.Page
         Error = ACustomer.Valid(Customer_First_Name, Customer_Last_Name, Customer_DOB, Customer_Address, Customer_Phone_Nmbr);
         if (Error == "")
         {
+            ACustomer.Customer_id =  Customer_id;
             ACustomer.Customer_First_Name = Customer_First_Name;
             ACustomer.Customer_Last_Name = Customer_Last_Name;
-            ACustomer.Customer_DOB = Convert.ToDateTime(DateTime.Now);
-            ACustomer.Customer_Phone_Nmbr = Customer_Phone_Nmbr;
+            ACustomer.Customer_DOB = Convert.ToDateTime(Customer_DOB);
             ACustomer.Customer_Address = Customer_Address;
+            ACustomer.Customer_Phone_Nmbr = Customer_Phone_Nmbr;
             ACustomer.Save_Payment_Info = ChkSavePaymentInfo.Checked;
-            clsCustomerCollection CustomerList = new clsCustomerCollection();
-            CustomerList.ThisCustomer = ACustomer;
-            CustomerList.Add();
 
+
+            clsCustomerCollection CustomerList = new clsCustomerCollection();
+
+            if (Customer_id == -1)
+            {
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Add();
+            }
+            else
+            {
+                CustomerList.ThisCustomer.Find(Customer_id);
+                CustomerList.ThisCustomer = ACustomer;
+                CustomerList.Add();
+            }
             Response.Redirect("CustomerList.aspx");
         }
         else
         {
             lblError.Text = Error;
         }
+ 
     }
 
 
@@ -74,4 +96,20 @@ public partial class _1_DataEntry : System.Web.UI.Page
 
         }
     }
+
+    void DisplayCustomer()
+    {
+        clsCustomerCollection Customer = new clsCustomerCollection();
+      
+        Customer.ThisCustomer.Find(Customer_id);
+        txtCustomer_id.Text = Customer.ThisCustomer.Customer_id.ToString();
+        txtCustomerFirstName.Text = Customer.ThisCustomer.Customer_First_Name.ToString();
+        txtCustomerLastName.Text = Customer.ThisCustomer.Customer_Last_Name.ToString();
+        txtCustomerAddress.Text = Customer.ThisCustomer.Customer_Address.ToString();
+        txtCustomerDOB.Text = Customer.ThisCustomer.Customer_DOB.ToString();
+        txtCustomerPhoneNmbr.Text = Customer.ThisCustomer.Customer_Phone_Nmbr.ToString();
+        ChkSavePaymentInfo.Checked = Customer.ThisCustomer.Save_Payment_Info;
+
+    }
+    
 }

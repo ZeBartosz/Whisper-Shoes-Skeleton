@@ -43,6 +43,7 @@
   <ItemGroup>
     <Compile Include="clsCustomers.cs" />
     <Compile Include="clsCustomerCollection.cs" />
+    <Compile Include="clsCustomersUser.cs" />
     <Compile Include="clsDataConnection.cs" />
     <Compile Include="clsOrder.cs" />
     <Compile Include="clsOrderCollection.cs" />
@@ -52,6 +53,7 @@
     <Compile Include="clsReviewUser.cs" />
     <Compile Include="clsStaff.cs" />
     <Compile Include="clsStaffCollection.cs" />
+    <Compile Include="clsStaffUser.cs" />
     <Compile Include="clsStock.cs" />
     <Compile Include="clsStockCollection.cs" />
     <Compile Include="clsStockUser.cs" />

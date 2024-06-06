@@ -22,6 +22,7 @@ public partial class CustomerLogin : System.Web.UI.Page
         UserName = Convert.ToString(txtUserName.Text);
         Password = Convert.ToString(txtPassword.Text);
         Found = AUser.FindUser(UserName, Password);
+        Session["AUser"] = AUser;
         if (txtUserName.Text == "")
         {
             lblError.Text = "Enter a username";

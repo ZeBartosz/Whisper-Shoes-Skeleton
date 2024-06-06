@@ -14,9 +14,12 @@
     <asp:Label ID="lblError" runat="server" style="z-index: 1; left: 24px; top: 58px; position: absolute" Text="[lblError]"></asp:Label>
     <asp:Button runat="server" Text="Add" OnClick="BtnAdd_Click1" ID="BtnAdd_Click2" Style="z-index: 1; left: 610px; top: 41px; position: absolute; height: 48px; width: 65px"></asp:Button>
     <asp:Button ID="btnApplyFilter" runat="server" OnClick="btnApplyFilter_Click" style="z-index: 1; left: 800px; top: 99px; position: absolute" Text="Apply Filter" />
-    <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 900px; top: 99px; position: absolute" Text="Clear Filter" />
+    <asp:Button ID="btnClearFilter" runat="server" OnClick="btnClearFilter_Click" style="z-index: 1; left: 911px; top: 99px; position: absolute" Text="Clear Filter" />
     <asp:Label ID="lblEnterLastName" runat="server" style="z-index: 1; left: 800px; top: 41px; position: absolute" Text="Enter the customers last name"></asp:Label>
     <asp:TextBox ID="txtFilterCustomerLastName" runat="server" style="z-index: 1; left: 800px; top: 70px; position: absolute"></asp:TextBox>
+        <p>
+            &nbsp;</p>
+        <asp:Button ID="btnReturnMainMenu" runat="server" style="z-index: 1; left: 800px; top: 140px; position: absolute" Text="Return to main menu" OnClick="btnReturnMainMenu_Click" />
     </form>
 </body>
 </html>

@@ -40,4 +40,9 @@ public partial class CustomerLogin : System.Web.UI.Page
         }
 
     }
+
+    protected void btnCancel_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }

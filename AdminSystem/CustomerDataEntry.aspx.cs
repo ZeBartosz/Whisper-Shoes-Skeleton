@@ -111,5 +111,10 @@ public partial class _1_DataEntry : System.Web.UI.Page
         ChkSavePaymentInfo.Checked = Customer.ThisCustomer.Save_Payment_Info;
 
     }
-    
+
+
+    protected void btnReturnMainMenu_Click(object sender, EventArgs e)
+    {
+        Response.Redirect("TeamMainMenu.aspx");
+    }
 }
